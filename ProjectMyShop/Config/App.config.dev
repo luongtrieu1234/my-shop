@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<appSettings>
+		<add key="Server" value="TRITRANMN2PC"/>
+		<add key="Instance" value="MSSQLSERVER01"/>
+		<add key="Database" value="PremiumPhoneShop"/>
+		<add key="Username" value="admin"/>
+		<add key="Password" value="admin"/>
+		<add key="Entropy" value="qwe3@1"/>
+		<add key="LastWindow" value="MainWindow"/>
+		<add key="NumberProductPerPage" value="10"/>
+		<add key="OpenLastWindow" value="1"/>
+	</appSettings>
+</configuration>

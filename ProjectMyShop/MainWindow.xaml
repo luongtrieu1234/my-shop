@@ -1,0 +1,100 @@
+﻿<Window x:Class="ProjectMyShop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:ProjectMyShop"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen" 
+        Title="MainWindow" Height="650" Width="1100"
+        Loaded="Window_Loaded">
+    <Grid x:Name="layoutContainer">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="12*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="12*"/>
+        </Grid.RowDefinitions>
+        <!--Background-->
+        <Image Name="background"
+               Grid.ColumnSpan="3"
+               Grid.RowSpan="3"
+               Stretch="UniformToFill"
+               Source="{DynamicResource Background}"/>
+        <!--Logo-->
+        <StackPanel
+               VerticalAlignment="Center"
+               Grid.RowSpan="2" Grid.ColumnSpan="2" Height="117" Margin="0,0,65,0">
+            <Image x:Name="logo"
+               Source="{DynamicResource Logo}" Height="117" Width="258"/>
+        </StackPanel>
+
+
+        <!--List of button-->
+        <StackPanel Grid.Row="2" Margin="0,10,0,0">
+            <Button x:Name="dashboardButton" Click="dashboardButton_Click"  Background="{DynamicResource MyPinkGradient}" materialDesign:ButtonAssist.CornerRadius="5" 
+                    Height="60">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Home" Width="25" Height="25"/>
+                        <TextBlock VerticalAlignment="Center" FontSize="18">Dashboard</TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button x:Name="categoriesButton" Click="categoriesButton_Click"  Background="{DynamicResource MyPinkGradient}" materialDesign:ButtonAssist.CornerRadius="5"
+                    Height="60">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Category" Width="25" Height="25"/>
+                        <TextBlock VerticalAlignment="Center" FontSize="18">Manage categories</TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button x:Name="productButton" Click="productButton_Click"  Background="{DynamicResource MyPinkGradient}" materialDesign:ButtonAssist.CornerRadius="5"
+                    Height="60">
+                <Button.Content>
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="Reproduction" Width="25" Height="25"/>
+                        <TextBlock VerticalAlignment="Center" FontSize="18">Manage products</TextBlock>
+                    </StackPanel>
+                </Button.Content>
+            </Button>
+            <Button x:Name="orderButton" Click="orderButton_Click"  Background="{DynamicResource MyPinkGradient}" materialDesign:ButtonAssist.CornerRadius="5"
+                    Height="60">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Receipt" Width="25" Height="25" />
+                    <TextBlock VerticalAlignment="Center" FontSize="18">Manage orders</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="statButton" Click="statButton_Click"  Background="{DynamicResource MyPinkGradient}" materialDesign:ButtonAssist.CornerRadius="5"
+                    Height="60">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="BarChart" Width="25" Height="25" />
+                    <TextBlock VerticalAlignment="Center" FontSize="18">Statistic</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button x:Name="configButton" Click="configButton_Click" Background="{DynamicResource MyPinkGradient}" materialDesign:ButtonAssist.CornerRadius="5"
+                    Height="60">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Kind="Gear" Width="25" Height="25"/>
+                    <TextBlock VerticalAlignment="Center" FontSize="18">Configuration</TextBlock>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <!--Content page-->
+        <Frame Name="pageNavigation" 
+               NavigationUIVisibility="Hidden"
+       
+               Grid.Column="2"
+               Grid.RowSpan="2"
+               Grid.Row="1" Margin="0,0,10,10">
+
+        </Frame>
+    </Grid>
+</Window>
