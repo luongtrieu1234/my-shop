@@ -148,7 +148,7 @@
                                 Width="300">
                     <ComboBox.ItemTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding PhoneName}"/>
+                            <TextBlock Text="{Binding ProductName}"/>
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
@@ -167,7 +167,7 @@
             materialDesign:ShadowAssist.ShadowDepth="Depth0">
 
             <TabControl Name="chartTabControl" SelectedIndex="{Binding tabSelectedIndex}" SelectionChanged="chartTabControl_SelectionChanged">
-                <TabItem Header="Phones Sales">
+                <TabItem Header="Products Sales">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="1*"/>
@@ -210,7 +210,7 @@
                             <RowDefinition Height="10*"/>
                         </Grid.RowDefinitions>
 
-                        <lvc:PieChart Name="productPieChart" Grid.Row="1" LegendLocation="Bottom" Series="{Binding phoneQuantityCollection}" Hoverable="True">
+                        <lvc:PieChart Name="productPieChart" Grid.Row="1" LegendLocation="Bottom" Series="{Binding productQuantityCollection}" Hoverable="True">
                         </lvc:PieChart>
                     </Grid>
                 </TabItem>

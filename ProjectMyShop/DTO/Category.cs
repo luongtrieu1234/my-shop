@@ -13,7 +13,7 @@ namespace ProjectMyShop.DTO
         public int ID { get; set; }
         public string? CatName { get; set; }
         public BitmapImage Avatar { get; set; }
-        public BindingList<Product>? Phones { get; set; }
+        public BindingList<Product>? Products { get; set; }
 
         public object Clone()
         {

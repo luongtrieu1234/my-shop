@@ -196,7 +196,7 @@ namespace ProjectMyShop.DAO
             try
             {
                 sqlCommand.ExecuteNonQuery();
-                sql = "delete from Phone where CatID = @ID";
+                sql = "delete from Product where CatID = @ID";
                 sqlCommand.Parameters.AddWithValue("@ID", ID);
                 sqlCommand.ExecuteNonQuery();
 

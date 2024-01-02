@@ -41,7 +41,7 @@ namespace ProjectMyShop.Views
             categoriesCombobox.ItemsSource = categories;
 
             if (categories.Count() > 0)
-                phones = _phoneBUS.getPhonesAccordingToSpecificCategory(categories[categoriesFigureIndex].ID);
+                phones = _phoneBUS.getProductsAccordingToSpecificCategory(categories[categoriesFigureIndex].ID);
             else
                 phones = new List<Product> { };
 
@@ -258,7 +258,7 @@ namespace ProjectMyShop.Views
         {
             if (phones.Count() > 0 && categories.Count() > 0)
             {
-                var phoneResult = _statisticsBUS.getPhoneQuantityInCategory(categories[categoriesFigureIndex].ID);
+                var phoneResult = _statisticsBUS.getProductQuantityInCategory(categories[categoriesFigureIndex].ID);
 
                 var phoneQuantityCollection = new SeriesCollection();
 
@@ -279,7 +279,7 @@ namespace ProjectMyShop.Views
 
         private void categoriesCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            phones = _phoneBUS.getPhonesAccordingToSpecificCategory(categories[categoriesFigureIndex].ID);
+            phones = _phoneBUS.getProductsAccordingToSpecificCategory(categories[categoriesFigureIndex].ID);
             productCombobox.ItemsSource = phones;
 
             configurePieChart();

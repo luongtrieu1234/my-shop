@@ -25,19 +25,19 @@ namespace ProjectMyShop.DAO
 
             var result = new List<DetailOrder>();
 
-            var _phoneBUS = new ProductBUS();
+            var _productBUS = new ProductBUS();
             while (reader.Read())
             {
                 var OrderID = reader.GetInt32("OrderID");
-                var PhoneID = reader.GetInt32("PhoneID");
+                var ProductID = reader.GetInt32("ProductID");
                 var Quantity = reader.GetInt32("Quantity");
 
-                var Phone = _phoneBUS.getPhoneByID(PhoneID);
+                var Product = _productBUS.getProductByID(ProductID);
 
                 DetailOrder _order = new DetailOrder()
                 {
                     OrderID = OrderID,
-                    Phone = Phone,
+                    Product = Product,
                     Quantity = Quantity
                 };
 
@@ -147,12 +147,12 @@ namespace ProjectMyShop.DAO
 
         public void AddDetailOrder(DetailOrder detail)
         {
-            var sql = "insert into DetailOrder(OrderID, PhoneID, Quantity) " +
-                "values (@OrderID, @PhoneID, @Quantity)";
+            var sql = "insert into DetailOrder(OrderID, ProductID, Quantity) " +
+                "values (@OrderID, @ProductID, @Quantity)";
             SqlCommand sqlCommand = new SqlCommand(sql, _connection);
 
             sqlCommand.Parameters.AddWithValue("@OrderID", detail.OrderID);
-            sqlCommand.Parameters.AddWithValue("@PhoneID", detail.Phone.ID);
+            sqlCommand.Parameters.AddWithValue("@ProductID", detail.Product.ID);
             sqlCommand.Parameters.AddWithValue("@Quantity", detail.Quantity);
 
             try
@@ -165,14 +165,14 @@ namespace ProjectMyShop.DAO
                 System.Diagnostics.Debug.WriteLine($"Inserted {detail.OrderID} Fail: " + ex.Message);
             }
         }
-        public void UpdateDetailOrder(int oldPhoneID, DetailOrder detail)
+        public void UpdateDetailOrder(int oldProductID, DetailOrder detail)
         {
-            var sql = "update DetailOrder set Quantity = @Quantity, PhoneID = @PhoneID where OrderID = @OrderID and PhoneID = @oldPhoneID";
+            var sql = "update DetailOrder set Quantity = @Quantity, ProductID = @ProductID where OrderID = @OrderID and ProductID = @oldProductID";
             SqlCommand sqlCommand = new SqlCommand(sql, _connection);
 
             sqlCommand.Parameters.AddWithValue("@OrderID", detail.OrderID);
-            sqlCommand.Parameters.AddWithValue("@PhoneID", detail.Phone.ID);
-            sqlCommand.Parameters.AddWithValue("@oldPhoneID", oldPhoneID);
+            sqlCommand.Parameters.AddWithValue("@ProductID", detail.Product.ID);
+            sqlCommand.Parameters.AddWithValue("@oldProductID", oldProductID);
             sqlCommand.Parameters.AddWithValue("@Quantity", detail.Quantity);
 
             try
@@ -187,11 +187,11 @@ namespace ProjectMyShop.DAO
         }
         public void DeleteDetailOrder(DetailOrder detail)
         {
-            var sql = "delete from DetailOrder where OrderID = @OrderID and PhoneID = @PhoneID and Quantity = @Quantity";
+            var sql = "delete from DetailOrder where OrderID = @OrderID and ProductID = @ProductID and Quantity = @Quantity";
             SqlCommand sqlCommand = new SqlCommand(sql, _connection);
 
             sqlCommand.Parameters.AddWithValue("@OrderID", detail.OrderID);
-            sqlCommand.Parameters.AddWithValue("@PhoneID", detail.Phone.ID);
+            sqlCommand.Parameters.AddWithValue("@ProductID", detail.Product.ID);
             sqlCommand.Parameters.AddWithValue("@Quantity", detail.Quantity);
 
             try

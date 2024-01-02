@@ -12,86 +12,86 @@ namespace ProjectMyShop.BUS
 {
     internal class ProductBUS
     {
-        private ProductDAO _phoneDAO;
+        private ProductDAO _productDAO;
 
         public ProductBUS()
         {
-            _phoneDAO = new ProductDAO();
-            if (_phoneDAO.CanConnect())
+            _productDAO = new ProductDAO();
+            if (_productDAO.CanConnect())
             {
-                _phoneDAO.Connect();
+                _productDAO.Connect();
             }
         }
 
-        public int GetTotalPhone()
+        public int GetTotalProduct()
         {
-            return _phoneDAO.getTotalProduct();
+            return _productDAO.getTotalProduct();
         }
         public List<Product> Top5OutStock()
         {
-            return _phoneDAO.GetTop5OutStock();
+            return _productDAO.GetTop5OutStock();
         }
 
-        public List<Product> getPhonesAccordingToSpecificCategory(int srcCategoryID)
+        public List<Product> getProductsAccordingToSpecificCategory(int srcCategoryID)
         {
-            return _phoneDAO.getProductsAccordingToSpecificCategory(srcCategoryID);
+            return _productDAO.getProductsAccordingToSpecificCategory(srcCategoryID);
         }
 
-        public void addPhone(Product phone)
+        public void addProduct(Product product)
         {
-            if (phone.Stock < 0)
+            if (product.Stock < 0)
             {
                 throw new Exception("Invalid stock");
             }
-            else if (phone.BoughtPrice < 0 || phone.SoldPrice < 0)
+            else if (product.BoughtPrice < 0 || product.SoldPrice < 0)
             {
                 throw new Exception("Invalid price");
             }
             else
             {
-                phone.UploadDate = DateTime.Now.Date;
-                _phoneDAO.addPhone(phone);
-                phone.ID = _phoneDAO.GetLastestInsertID();
+                product.UploadDate = DateTime.Now.Date;
+                _productDAO.addProduct(product);
+                product.ID = _productDAO.GetLastestInsertID();
             }
         }
-        public void removePhone(Product phone)
+        public void removeProduct(Product product)
         {
-            _phoneDAO.deleteProduct(phone.ID);
+            _productDAO.deleteProduct(product.ID);
         }
-        public void updatePhone(int ID, Product phone)
+        public void updateProduct(int ID, Product product)
         {
-            Debug.WriteLine(phone.Stock);
-            if (phone.Stock < 0)
+            Debug.WriteLine(product.Stock);
+            if (product.Stock < 0)
             {
                 throw new Exception("Invalid stock");
             }
-            else if (phone.BoughtPrice < 0 || phone.SoldPrice < 0)
+            else if (product.BoughtPrice < 0 || product.SoldPrice < 0)
             {
                 throw new Exception("Invalid price");
             }
             else
             {
-                _phoneDAO.updateProduct(ID, phone);
+                _productDAO.updateProduct(ID, product);
             }
         }
 
-        public List<BestSellingPhone> getBestSellingPhonesInWeek(DateTime src)
+        public List<BestSellingProduct> getBestSellingPhonesInWeek(DateTime src)
         {
-            return _phoneDAO.getBestSellingProductsInWeek(src);
+            return _productDAO.getBestSellingProductsInWeek(src);
         }
 
-        public List<BestSellingPhone> getBestSellingPhonesInMonth(DateTime src)
+        public List<BestSellingProduct> getBestSellingPhonesInMonth(DateTime src)
         {
-            return _phoneDAO.getBestSellingProductsInMonth(src);
+            return _productDAO.getBestSellingProductsInMonth(src);
         }
 
-        public List<BestSellingPhone> getBestSellingPhonesInYear(DateTime src)
+        public List<BestSellingProduct> getBestSellingPhonesInYear(DateTime src)
         {
-            return _phoneDAO.getBestSellingProductsInYear(src);
+            return _productDAO.getBestSellingProductsInYear(src);
         }
-        public Product? getPhoneByID(int phoneID)
+        public Product? getProductByID(int phoneID)
         {
-            return _phoneDAO.getProductByID(phoneID);
+            return _productDAO.getProductByID(phoneID);
         }
     }
 }

@@ -103,7 +103,7 @@ namespace ProjectMyShop.Views
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             var p = (Category)categoriesListView.SelectedItem;
-            var result = MessageBox.Show($"Bạn thật sự muốn xóa hãng điện thoại {p.CatName}?",
+            var result = MessageBox.Show($"Bạn thật sự muốn xóa danh mục {p.CatName}?",
                 "Xác nhận xóa", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (MessageBoxResult.Yes == result)
             {

@@ -18,12 +18,12 @@ using System.Windows.Shapes;
 namespace ProjectMyShop.Views
 {
     /// <summary>
-    /// Interaction logic for EditPhoneScreen.xaml
+    /// Interaction logic for EditProductScreen.xaml
     /// </summary>
-    public partial class EditPhoneScreen : Window
+    public partial class EditProductScreen : Window
     {
         public Product EditedPhone { get; set; }
-        public EditPhoneScreen(Product p)
+        public EditProductScreen(Product p)
         {
             InitializeComponent();
             EditedPhone = (Product)p.Clone();

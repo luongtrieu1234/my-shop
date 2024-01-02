@@ -96,7 +96,7 @@ namespace ProjectMyShop.Views
             categoriesListView.ItemsSource = _categories;
             foreach (var category in _categories)
             {
-                category.Phones = new BindingList<Product>(phoneBUS.getPhonesAccordingToSpecificCategory(category.ID));
+                category.Products = new BindingList<Product>(phoneBUS.getProductsAccordingToSpecificCategory(category.ID));
             }
             if(_categories.Count > 0)
             {
@@ -125,7 +125,7 @@ namespace ProjectMyShop.Views
             }
             _currentPage = 1;
             previousButton.IsEnabled = false;
-            _vm.Products = _categories[i].Phones;
+            _vm.Products = _categories[i].Products;
             _vm.SelectedPhones = _vm.Products
                 .Skip((_currentPage - 1) * _rowsPerPage)
                 .Take(_rowsPerPage).ToList();
@@ -158,7 +158,7 @@ namespace ProjectMyShop.Views
         private void editMenuItem_Click(object sender, RoutedEventArgs e)
         {
             var p = (Product)phonesListView.SelectedItem;
-            var screen = new EditPhoneScreen(p);
+            var screen = new EditProductScreen(p);
             var result = screen.ShowDialog();
             if (result == true)
             {
@@ -172,7 +172,7 @@ namespace ProjectMyShop.Views
                 p.Stock = info.Stock;
                 try
                 {
-                    _phoneBus.updatePhone(p.ID, p);
+                    _phoneBus.updateProduct(p.ID, p);
                     searchTextBox_TextChanged(sender, null);
                 }
                 catch (Exception ex)
@@ -199,8 +199,8 @@ namespace ProjectMyShop.Views
             {
                 //_products.Remove(p);
                 _vm.Products.Remove(p);
-                _categories[i].Phones.Remove(p);
-                _phoneBus.removePhone(p);
+                _categories[i].Products.Remove(p);
+                _phoneBus.removeProduct(p);
                 searchTextBox_TextChanged(sender, null);
                 //_vm.SelectedPhones.Remove(p);
 
@@ -284,7 +284,7 @@ namespace ProjectMyShop.Views
                     Category cat = new Category()
                     {
                         CatName = tab.Name,
-                        Phones = new BindingList<Product>()
+                        Products = new BindingList<Product>()
                     };
                     _cateBUS.AddCategory(cat);
 
@@ -321,7 +321,7 @@ namespace ProjectMyShop.Views
                             Avatar = new BitmapImage(new Uri(avaURL, UriKind.Absolute)),
                             Category = cat,
                         };
-                        _phoneBUS.addPhone(p);
+                        _phoneBUS.addProduct(p);
                         row++;
                         cell = tab.Cells[$"{column}{row}"];
                     }
@@ -330,7 +330,7 @@ namespace ProjectMyShop.Views
                 Debug.WriteLine(_categories.Count);
                 foreach(var category in _categories)
                 {
-                    category.Phones = new BindingList<Product>(_phoneBUS.getPhonesAccordingToSpecificCategory(category.ID));
+                    category.Products = new BindingList<Product>(_phoneBUS.getProductsAccordingToSpecificCategory(category.ID));
                 }
                 categoriesListView.ItemsSource = _categories;
                 loadPhones();
@@ -339,7 +339,7 @@ namespace ProjectMyShop.Views
         
         private void AddMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var screen = new AddPhoneScreen(_categories!);
+            var screen = new AddProductScreen(_categories!);
             var result = screen.ShowDialog();
             if (result == true)
             {
@@ -351,8 +351,8 @@ namespace ProjectMyShop.Views
                     try
                     {
                     newPhone.Category = _categories[catIndex];
-                    _phoneBus.addPhone(newPhone);
-                    _categories[catIndex].Phones.Add(newPhone);
+                    _phoneBus.addProduct(newPhone);
+                    _categories[catIndex].Products.Add(newPhone);
                     loadPhones();
                     }
                     catch (Exception ex)

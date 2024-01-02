@@ -35,7 +35,7 @@
 
             <Grid Margin="10">
                 <StackPanel>
-                    <TextBlock Text="Total phones"
+                    <TextBlock Text="Total products"
                                    Foreground="White"
                                    Style="{StaticResource MaterialDesignSubtitle2TextBlock}"/>
 

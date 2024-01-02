@@ -1,15 +1,10 @@
-﻿using ProjectMyShop.Helpers;
+﻿using ProjectMyShop.DTO;
+using ProjectMyShop.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ProjectMyShop.DTO;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Windows.Media.Imaging;
 using System.IO;
+using System.Windows.Media.Imaging;
 
 namespace ProjectMyShop.DAO
 {
@@ -17,7 +12,7 @@ namespace ProjectMyShop.DAO
     {
         public int getTotalProduct()
         {
-            var sql = "select count(*) as total from Phone";
+            var sql = "select count(*) as total from Product";
             var command = new SqlCommand(sql, _connection);
             var reader = command.ExecuteReader();
 
@@ -30,12 +25,12 @@ namespace ProjectMyShop.DAO
             return result;
         }
 
-        public Product? getProductByID(int phoneID)
+        public Product? getProductByID(int productID)
         {
-            var sql = "select * from Phone WHERE ID = @phoneID";
+            var sql = "select * from Product WHERE ID = @productID";
             var command = new SqlCommand(sql, _connection);
 
-            command.Parameters.AddWithValue("@phoneID", phoneID);
+            command.Parameters.AddWithValue("@productID", productID);
 
             var reader = command.ExecuteReader();
 
@@ -43,7 +38,7 @@ namespace ProjectMyShop.DAO
             if (reader.Read())
             {
                 var ID = (int)reader["ID"];
-                var PhoneName = (String)reader["PhoneName"];
+                var ProductName = (String)reader["ProductName"];
                 var Manufacturer = (String)reader["Manufacturer"];
 
                 var SoldPrice = (int)(decimal)reader["SoldPrice"];
@@ -53,7 +48,7 @@ namespace ProjectMyShop.DAO
                 product = new Product()
                 {
                     ID = ID,
-                    ProductName = PhoneName,
+                    ProductName = ProductName,
                     Manufacturer = Manufacturer,
                     SoldPrice = SoldPrice,
                     Stock = Stock,
@@ -85,7 +80,7 @@ namespace ProjectMyShop.DAO
 
         public List<Product> GetTop5OutStock()
         {
-            var sql = "select top(5) * from Phone where stock < 5 order by stock ";
+            var sql = "select top(5) * from Product where stock < 5 order by stock ";
             var command = new SqlCommand(sql, _connection);
             var reader = command.ExecuteReader();
 
@@ -93,14 +88,14 @@ namespace ProjectMyShop.DAO
             while (reader.Read())
             {
                 var ID = (int)reader["ID"];
-                var ProductName = (String)reader["PhoneName"];
+                var ProductName = (String)reader["ProductName"];
                 var Manufacturer = (String)reader["Manufacturer"];
 
                 var SoldPrice = (int)(decimal)reader["SoldPrice"];
                 //var SoldPrice = (int)reader["SoldPrice"];
                 var Stock = (int)reader["Stock"];
 
-                Product phone = new Product()
+                Product product = new Product()
                 {
                     ID = ID,
                     ProductName = ProductName,
@@ -108,8 +103,8 @@ namespace ProjectMyShop.DAO
                     SoldPrice = SoldPrice,
                     Stock = Stock,
                 };
-                if (phone.ProductName != "")
-                    list.Add(phone);
+                if (product.ProductName != "")
+                    list.Add(product);
             }
             reader.Close();
             return list;
@@ -117,7 +112,7 @@ namespace ProjectMyShop.DAO
 
         public List<Product> getProductsAccordingToSpecificCategory(int srcCategoryID)
         {
-            var sql = "select * from Phone where CatID = @CategoryID";
+            var sql = "select * from Product where CatID = @CategoryID";
 
             var sqlParameter = new SqlParameter();
             sqlParameter.ParameterName = "@CategoryID";
@@ -132,7 +127,7 @@ namespace ProjectMyShop.DAO
             while (reader.Read())
             {
                 var ID = (int)reader["ID"];
-                var ProductName = (String)reader["PhoneName"];
+                var ProductName = (String)reader["ProductName"];
                 var Manufacturer = (String)reader["Manufacturer"];
 
                 var SoldPrice = (int)(decimal)reader["SoldPrice"];
@@ -141,7 +136,7 @@ namespace ProjectMyShop.DAO
                 //var SoldPrice = (int)reader["SoldPrice"];
                 var Stock = (int)reader["Stock"];
 
-                Product phone = new Product()
+                Product product = new Product()
                 {
                     ID = ID,
                     ProductName = ProductName,
@@ -164,33 +159,33 @@ namespace ProjectMyShop.DAO
                         image.StreamSource = ms;
                         image.EndInit();
                         image.Freeze();
-                        phone.Avatar = image;
+                        product.Avatar = image;
                     }
                 }
-                if (phone.ProductName != "")
-                    list.Add(phone);
+                if (product.ProductName != "")
+                    list.Add(product);
             }
             reader.Close();
             return list;
         }
 
-        public void addPhone(Product product)
+        public void addProduct(Product product)
         {
             // ID Auto Increment
             var sql = "";
             if (product.Avatar != null)
             {
-                sql = "insert into Phone(PhoneName, Manufacturer, BoughtPrice, SoldPrice, Stock, UploadDate, Description, CatID, Avatar) " +
-                    "values (@PhoneName, @Manufacturer, @BoughtPrice, @SoldPrice, @Stock, @UploadDate, @Description, @CatID, @Avatar)"; //
+                sql = "insert into Product(ProductName, Manufacturer, BoughtPrice, SoldPrice, Stock, UploadDate, Description, CatID, Avatar) " +
+                    "values (@ProductName, @Manufacturer, @BoughtPrice, @SoldPrice, @Stock, @UploadDate, @Description, @CatID, @Avatar)"; //
             }
             else
             {
-                sql = "insert into Phone(PhoneName, Manufacturer, BoughtPrice, SoldPrice, Stock, UploadDate, Description, CatID) " +
-                    "values (@PhoneName, @Manufacturer, @BoughtPrice, @SoldPrice, @Stock, @UploadDate, @Description, @CatID)"; //
+                sql = "insert into Product(ProductName, Manufacturer, BoughtPrice, SoldPrice, Stock, UploadDate, Description, CatID) " +
+                    "values (@ProductName, @Manufacturer, @BoughtPrice, @SoldPrice, @Stock, @UploadDate, @Description, @CatID)"; //
             }
             SqlCommand sqlCommand = new SqlCommand(sql, _connection);
 
-            sqlCommand.Parameters.AddWithValue("@PhoneName", product.ProductName);
+            sqlCommand.Parameters.AddWithValue("@ProductName", product.ProductName);
             sqlCommand.Parameters.AddWithValue("@Manufacturer", product.Manufacturer);
             sqlCommand.Parameters.AddWithValue("@BoughtPrice", product.BoughtPrice);
             sqlCommand.Parameters.AddWithValue("@SoldPrice", product.SoldPrice);
@@ -222,53 +217,53 @@ namespace ProjectMyShop.DAO
 
         public int GetLastestInsertID()
         {
-            string sql = "select ident_current('Phone')";
+            string sql = "select ident_current('Product')";
             SqlCommand sqlCommand = new SqlCommand(sql, _connection);
             var resutl = sqlCommand.ExecuteScalar();
             System.Diagnostics.Debug.WriteLine(resutl);
             return System.Convert.ToInt32(sqlCommand.ExecuteScalar());
         }
-        public void deleteProduct(int phoneid)
+        public void deleteProduct(int productid)
         {
-            string sql = "delete from Phone where ID = @ID";
+            string sql = "delete from Product where ID = @ID";
             SqlCommand sqlCommand = new SqlCommand(sql, _connection);
-            sqlCommand.Parameters.AddWithValue("@ID", phoneid);
+            sqlCommand.Parameters.AddWithValue("@ID", productid);
             try
             {
                 sqlCommand.ExecuteNonQuery();
-                System.Diagnostics.Debug.WriteLine($"Deleted {phoneid} OK");
+                System.Diagnostics.Debug.WriteLine($"Deleted {productid} OK");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Deleted {phoneid} Fail: " + ex.Message);
+                System.Diagnostics.Debug.WriteLine($"Deleted {productid} Fail: " + ex.Message);
             }
         }
-        public void updateProduct(int id, Product phone)
+        public void updateProduct(int id, Product product)
         {
             string sql;
-            if (phone.Avatar != null)
+            if (product.Avatar != null)
             {
-                sql = "update Phone set PhoneName = @PhoneName, Manufacturer = @Manufacturer, Description = @Description, " +
+                sql = "update Product set ProductName = @ProductName, Manufacturer = @Manufacturer, Description = @Description, " +
                 "BoughtPrice = @BoughtPrice, Stock = @Stock, SoldPrice = @SoldPrice, Avatar = @Avatar where ID = @ID";
             }
             else
             {
-                sql = "update Phone set PhoneName = @PhoneName, Manufacturer = @Manufacturer, Description = @Description, " +
+                sql = "update Product set ProductName = @ProductName, Manufacturer = @Manufacturer, Description = @Description, " +
                 "BoughtPrice = @BoughtPrice, Stock = @Stock, SoldPrice = @SoldPrice where ID = @ID";
             }
             SqlCommand sqlCommand = new SqlCommand(sql, _connection);
             sqlCommand.Parameters.AddWithValue("@ID", id);
-            sqlCommand.Parameters.AddWithValue("@PhoneName", phone.ProductName);
-            sqlCommand.Parameters.AddWithValue("@Manufacturer", phone.Manufacturer);
-            sqlCommand.Parameters.AddWithValue("@BoughtPrice", phone.BoughtPrice);
-            sqlCommand.Parameters.AddWithValue("@SoldPrice", phone.SoldPrice);
-            sqlCommand.Parameters.AddWithValue("@Stock", phone.Stock);
-            sqlCommand.Parameters.AddWithValue("@Description", phone.Description);
+            sqlCommand.Parameters.AddWithValue("@ProductName", product.ProductName);
+            sqlCommand.Parameters.AddWithValue("@Manufacturer", product.Manufacturer);
+            sqlCommand.Parameters.AddWithValue("@BoughtPrice", product.BoughtPrice);
+            sqlCommand.Parameters.AddWithValue("@SoldPrice", product.SoldPrice);
+            sqlCommand.Parameters.AddWithValue("@Stock", product.Stock);
+            sqlCommand.Parameters.AddWithValue("@Description", product.Description);
 
-            if (phone.Avatar != null)
+            if (product.Avatar != null)
             {
                 var encoder = new JpegBitmapEncoder();
-                encoder.Frames.Add(BitmapFrame.Create(phone.Avatar));
+                encoder.Frames.Add(BitmapFrame.Create(product.Avatar));
                 using (var stream = new MemoryStream())
                 {
                     encoder.Save(stream);
@@ -279,19 +274,19 @@ namespace ProjectMyShop.DAO
             try
             {
                 sqlCommand.ExecuteNonQuery();
-                System.Diagnostics.Debug.WriteLine($"Updated {phone.ID} OK");
+                System.Diagnostics.Debug.WriteLine($"Updated {product.ID} OK");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Updated {phone.ID} Fail: " + ex.Message);
+                System.Diagnostics.Debug.WriteLine($"Updated {product.ID} Fail: " + ex.Message);
             }
         }
 
-        public List<BestSellingPhone> getBestSellingProductsInWeek(DateTime src)
+        public List<BestSellingProduct> getBestSellingProductsInWeek(DateTime src)
         {
             string sqlFormattedDate = src.ToString("yyyy-MM-dd");
 
-            var sql = "select TOP(5) p.ID, p.PhoneName, p.Manufacturer, p.Stock, p.Description, p.BoughtPrice, p.SoldPrice, p.CatID, p.UploadDate, p.Avatar, sum(do.Quantity) as Quantity from Orders o join DetailOrder do on o.ID = do.OrderID join Phone p on p.ID = do.PhoneID where OrderDate between DATEADD(DAY, -7, @SelectedDate) and DATEADD(DAY, 1, @SelectedDate) group by p.ID, p.PhoneName, p.Manufacturer, p.Stock, p.Description, p.BoughtPrice, p.SoldPrice, p.CatID, p.UploadDate, p.Avatar order by sum(do.Quantity) desc;";
+            var sql = "select TOP(5) p.ID, p.ProductName, p.Manufacturer, p.Stock, p.Description, p.BoughtPrice, p.SoldPrice, p.CatID, p.UploadDate, p.Avatar, sum(do.Quantity) as Quantity from Orders o join DetailOrder do on o.ID = do.OrderID join Product p on p.ID = do.ProductID where OrderDate between DATEADD(DAY, -7, @SelectedDate) and DATEADD(DAY, 1, @SelectedDate) group by p.ID, p.ProductName, p.Manufacturer, p.Stock, p.Description, p.BoughtPrice, p.SoldPrice, p.CatID, p.UploadDate, p.Avatar order by sum(do.Quantity) desc;";
 
             var sqlParameter = new SqlParameter();
             sqlParameter.ParameterName = "@SelectedDate";
@@ -302,11 +297,11 @@ namespace ProjectMyShop.DAO
 
             var reader = command.ExecuteReader();
 
-            List<BestSellingPhone> list = new List<BestSellingPhone>();
+            List<BestSellingProduct> list = new List<BestSellingProduct>();
             while (reader.Read())
             {
                 var ID = (int)reader["ID"];
-                var ProductName = (String)reader["PhoneName"];
+                var ProductName = (String)reader["ProductName"];
                 var Manufacturer = (String)reader["Manufacturer"];
 
                 var SoldPrice = (int)(decimal)reader["SoldPrice"];
@@ -315,7 +310,7 @@ namespace ProjectMyShop.DAO
                 var Stock = (int)reader["Stock"];
                 var Quantity = (int)reader["Quantity"];
 
-                BestSellingPhone product = new BestSellingPhone()
+                BestSellingProduct product = new BestSellingProduct()
                 {
                     ID = ID,
                     ProductName = ProductName,
@@ -349,11 +344,11 @@ namespace ProjectMyShop.DAO
             return list;
         }
 
-        public List<BestSellingPhone> getBestSellingProductsInMonth(DateTime src)
+        public List<BestSellingProduct> getBestSellingProductsInMonth(DateTime src)
         {
             string sqlFormattedDate = src.ToString("yyyy-MM-dd");
 
-            var sql = "select TOP(5) p.ID, p.PhoneName, p.Manufacturer, p.Stock, p.Description, p.BoughtPrice, p.SoldPrice, p.CatID, p.UploadDate, p.Avatar, sum(do.Quantity) as Quantity from Orders o join DetailOrder do on o.ID = do.OrderID join Phone p on p.ID = do.PhoneID where datepart(year, OrderDate) = datepart(year, @SelectedDate) and datepart(month, OrderDate) = datepart(month, @SelectedDate) group by p.ID, p.PhoneName, p.Manufacturer, p.Stock, p.Description, p.BoughtPrice, p.SoldPrice, p.CatID, p.UploadDate, p.Avatar order by sum(do.Quantity) desc;";
+            var sql = "select TOP(5) p.ID, p.ProductName, p.Manufacturer, p.Stock, p.Description, p.BoughtPrice, p.SoldPrice, p.CatID, p.UploadDate, p.Avatar, sum(do.Quantity) as Quantity from Orders o join DetailOrder do on o.ID = do.OrderID join Product p on p.ID = do.ProductID where datepart(year, OrderDate) = datepart(year, @SelectedDate) and datepart(month, OrderDate) = datepart(month, @SelectedDate) group by p.ID, p.ProductName, p.Manufacturer, p.Stock, p.Description, p.BoughtPrice, p.SoldPrice, p.CatID, p.UploadDate, p.Avatar order by sum(do.Quantity) desc;";
 
             var sqlParameter = new SqlParameter();
             sqlParameter.ParameterName = "@SelectedDate";
@@ -364,12 +359,12 @@ namespace ProjectMyShop.DAO
 
             var reader = command.ExecuteReader();
 
-            List<BestSellingPhone> list = new List<BestSellingPhone>();
+            List<BestSellingProduct> list = new List<BestSellingProduct>();
 
             while (reader.Read())
             {
                 var ID = (int)reader["ID"];
-                var PhoneName = (String)reader["PhoneName"];
+                var ProductName = (String)reader["ProductName"];
                 var Manufacturer = (String)reader["Manufacturer"];
                 var SoldPrice = (int)(decimal)reader["SoldPrice"];
                 var BoughtPrice = (int)(decimal)reader["BoughtPrice"];
@@ -377,10 +372,10 @@ namespace ProjectMyShop.DAO
                 var Stock = (int)reader["Stock"];
                 var Quantity = (int)reader["Quantity"];
 
-                BestSellingPhone phone = new BestSellingPhone()
+                BestSellingProduct product = new BestSellingProduct()
                 {
                     ID = ID,
-                    ProductName = PhoneName,
+                    ProductName = ProductName,
                     Manufacturer = Manufacturer,
                     SoldPrice = SoldPrice,
                     Stock = Stock,
@@ -401,21 +396,21 @@ namespace ProjectMyShop.DAO
                         image.StreamSource = ms;
                         image.EndInit();
                         image.Freeze();
-                        phone.Avatar = image;
+                        product.Avatar = image;
                     }
                 }
-                if (phone.ProductName != "")
-                    list.Add(phone);
+                if (product.ProductName != "")
+                    list.Add(product);
             }
             reader.Close();
             return list;
         }
 
-        public List<BestSellingPhone> getBestSellingProductsInYear(DateTime src)
+        public List<BestSellingProduct> getBestSellingProductsInYear(DateTime src)
         {
             string sqlFormattedDate = src.ToString("yyyy-MM-dd");
 
-            var sql = "select TOP(5) p.ID, p.PhoneName, p.Manufacturer, p.Stock, p.Description, p.BoughtPrice, p.SoldPrice, p.CatID, p.UploadDate, p.Avatar, sum(do.Quantity) as Quantity from Orders o join DetailOrder do on o.ID = do.OrderID join Phone p on p.ID = do.PhoneID where datepart(year, OrderDate) = datepart(year, @SelectedDate) group by p.ID, p.PhoneName, p.Manufacturer, p.Stock, p.Description, p.BoughtPrice, p.SoldPrice, p.CatID, p.UploadDate, p.Avatar order by sum(do.Quantity) desc;";
+            var sql = "select TOP(5) p.ID, p.ProductName, p.Manufacturer, p.Stock, p.Description, p.BoughtPrice, p.SoldPrice, p.CatID, p.UploadDate, p.Avatar, sum(do.Quantity) as Quantity from Orders o join DetailOrder do on o.ID = do.OrderID join Product p on p.ID = do.ProductID where datepart(year, OrderDate) = datepart(year, @SelectedDate) group by p.ID, p.ProductName, p.Manufacturer, p.Stock, p.Description, p.BoughtPrice, p.SoldPrice, p.CatID, p.UploadDate, p.Avatar order by sum(do.Quantity) desc;";
 
             var sqlParameter = new SqlParameter();
             sqlParameter.ParameterName = "@SelectedDate";
@@ -426,11 +421,11 @@ namespace ProjectMyShop.DAO
 
             var reader = command.ExecuteReader();
 
-            List<BestSellingPhone> list = new List<BestSellingPhone>();
+            List<BestSellingProduct> list = new List<BestSellingProduct>();
             while (reader.Read())
             {
                 var ID = (int)reader["ID"];
-                var PhoneName = (String)reader["PhoneName"];
+                var ProductName = (String)reader["ProductName"];
                 var Manufacturer = (String)reader["Manufacturer"];
                 var SoldPrice = (int)(decimal)reader["SoldPrice"];
                 var BoughtPrice = (int)(decimal)reader["BoughtPrice"];
@@ -438,10 +433,10 @@ namespace ProjectMyShop.DAO
                 var Stock = (int)reader["Stock"];
                 var Quantity = (int)reader["Quantity"];
 
-                BestSellingPhone phone = new BestSellingPhone()
+                BestSellingProduct product = new BestSellingProduct()
                 {
                     ID = ID,
-                    ProductName = PhoneName,
+                    ProductName = ProductName,
                     Manufacturer = Manufacturer,
                     SoldPrice = SoldPrice,
                     Stock = Stock,
@@ -462,11 +457,11 @@ namespace ProjectMyShop.DAO
                         image.StreamSource = ms;
                         image.EndInit();
                         image.Freeze();
-                        phone.Avatar = image;
+                        product.Avatar = image;
                     }
                 }
-                if (phone.ProductName != "")
-                    list.Add(phone);
+                if (product.ProductName != "")
+                    list.Add(product);
             }
             reader.Close();
             return list;

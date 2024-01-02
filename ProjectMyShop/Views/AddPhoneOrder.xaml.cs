@@ -18,9 +18,9 @@ using System.Windows.Shapes;
 namespace ProjectMyShop.Views
 {
     /// <summary>
-    /// Interaction logic for AddPhoneOrder.xaml
+    /// Interaction logic for AddProductOrder.xaml
     /// </summary>
-    public partial class AddPhoneOrder : Window
+    public partial class AddProductOrder : Window
     {
         ProductBUS _phoneBus;
         CategoryBUS _categoryBus;
@@ -29,7 +29,7 @@ namespace ProjectMyShop.Views
         public DetailOrder detailOrder;
 
 
-        public AddPhoneOrder(DetailOrder detailOrder)
+        public AddProductOrder(DetailOrder detailOrder)
         {
             InitializeComponent();
             this.detailOrder = (DetailOrder)detailOrder.Clone();
@@ -41,7 +41,7 @@ namespace ProjectMyShop.Views
             int i = PhoneListView.SelectedIndex;
             if (i != -1)
             {
-                detailOrder.Phone = _selectedPhones[i];
+                detailOrder.Product = _selectedPhones[i];
             }
             detailOrder.Quantity = int.Parse(QuantityTextBox.Text);
             DialogResult = true;
@@ -65,7 +65,7 @@ namespace ProjectMyShop.Views
 
             if (categoryCombobox.SelectedIndex >= 0)
             {
-                _selectedPhones = _phoneBus.getPhonesAccordingToSpecificCategory(_categories[categoryCombobox.SelectedIndex].ID);
+                _selectedPhones = _phoneBus.getProductsAccordingToSpecificCategory(_categories[categoryCombobox.SelectedIndex].ID);
                 PhoneListView.ItemsSource = _selectedPhones;
             }
 
@@ -76,7 +76,7 @@ namespace ProjectMyShop.Views
         {
             if (categoryCombobox.SelectedIndex >= 0)
             {
-                _selectedPhones = _phoneBus.getPhonesAccordingToSpecificCategory(_categories[categoryCombobox.SelectedIndex].ID);
+                _selectedPhones = _phoneBus.getProductsAccordingToSpecificCategory(_categories[categoryCombobox.SelectedIndex].ID);
                 PhoneListView.ItemsSource = _selectedPhones;
             }
         }
@@ -94,13 +94,13 @@ namespace ProjectMyShop.Views
                     QuantityTextBox.Text = "0";
                 }
                 else if ((int.Parse(QuantityTextBox.Text)
-                    > detailOrder.Phone.Stock))
+                    > detailOrder.Product.Stock))
                 {
                     QuantityTextBox.Text = QuantityTextBox.Text.Remove(QuantityTextBox.Text.Length - 1);
 
                     if (int.Parse(QuantityTextBox.Text)
-                        > detailOrder.Phone.Stock)
-                        QuantityTextBox.Text = detailOrder.Phone.Stock.ToString();
+                        > detailOrder.Product.Stock)
+                        QuantityTextBox.Text = detailOrder.Product.Stock.ToString();
                 }
             }
 
@@ -122,10 +122,10 @@ namespace ProjectMyShop.Views
             int i = PhoneListView.SelectedIndex;
             if (i != -1)
             {
-                detailOrder.Phone = _selectedPhones[(int)i];
+                detailOrder.Product = _selectedPhones[(int)i];
                 detailOrder.Quantity = 0;
 
-                PhoneTextBox.Text = detailOrder.Phone.ProductName;
+                PhoneTextBox.Text = detailOrder.Product.ProductName;
                 QuantityTextBox.Text = detailOrder.Quantity.ToString();
             }
         }

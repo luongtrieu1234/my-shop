@@ -29,7 +29,7 @@ namespace ProjectMyShop.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            totalPhone = _productBUS.GetTotalPhone();
+            totalPhone = _productBUS.GetTotalProduct();
             weekOrder = _orderBUS.CountOrderByWeek();
             monthOrder = _orderBUS.CountOrderByMonth();
             _products = _productBUS.Top5OutStock();
@@ -58,7 +58,7 @@ namespace ProjectMyShop.Views
                     try
                     {
                         var newPhone = screen.newPhone;
-                        _productBUS.updatePhone(p.ID, newPhone);
+                        _productBUS.updateProduct(p.ID, newPhone);
 
                         // reload page
                         _products = _productBUS.Top5OutStock();

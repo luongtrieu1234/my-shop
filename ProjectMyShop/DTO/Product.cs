@@ -26,7 +26,7 @@ namespace ProjectMyShop.DTO
         }
     }
 
-    public class BestSellingPhone : Product
+    public class BestSellingProduct : Product
     {
         public int Quantity { get; set; }
     }

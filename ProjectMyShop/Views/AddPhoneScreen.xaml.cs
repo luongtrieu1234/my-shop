@@ -18,16 +18,16 @@ using System.Windows.Shapes;
 namespace ProjectMyShop.Views
 {
     /// <summary>
-    /// Interaction logic for AddPhoneScreen.xaml
+    /// Interaction logic for AddProductScreen.xaml
     /// </summary>
-    public partial class AddPhoneScreen : Window
+    public partial class AddProductScreen : Window
     {
         public Product newPhone { get; set; }
         public int catIndex { get; set; } = -1;
         ProductBUS _phoneBUS { get; set; }
         
 
-        public AddPhoneScreen(List<Category> category)
+        public AddProductScreen(List<Category> category)
         {
             InitializeComponent();
             newPhone = new Product();
