@@ -12,7 +12,7 @@
         Title="Detail Order" Height="500" Width="450">
     <StackPanel Orientation="Horizontal">
         <StackPanel Orientation="Vertical">
-            <ComboBox Style="{Binding MaterialDesign}" BorderThickness="1" BorderBrush="MediumPurple" Name="categoryCombobox" Width="100" Height="35" SelectionChanged="categoryCombobox_SelectionChanged" Grid.Column="1" Grid.ColumnSpan="2">
+            <ComboBox Style="{Binding MaterialDesign}" BorderThickness="1" BorderBrush="#FFFEA3B6" Name="categoryCombobox" Width="100" Height="35" SelectionChanged="categoryCombobox_SelectionChanged" Grid.Column="1" Grid.ColumnSpan="2">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Padding="5" Text="{Binding CatName}"/>
@@ -39,11 +39,11 @@
 
         <StackPanel Orientation="Vertical">
             <TextBox x:Name="PhoneTextBox" Margin="10,10" materialDesign:HintAssist.Hint="Phone Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"
-                 Text="{Binding Path=Phone.PhoneName}"/>
+                 Text="{Binding Path=Phone.PhoneName}" CaretBrush="#FF481F72"/>
             <TextBox x:Name="QuantityTextBox" Margin="10,10" materialDesign:HintAssist.Hint="Quantity" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="PreviewTextInput" TextChanged="TextBox_TextChanged"
-                 Text="{Binding Quantity}"/>
-            <Button x:Name="SaveButton" Content="Save" Margin="10,10" Click="SaveButton_Click" Width="90"/>
-            <Button x:Name="CancelButton" Content="Cancel" Margin="10,10" Click="CancelButton_Click" Width="90"/>
+                 Text="{Binding Quantity}" CaretBrush="#FF481F72"/>
+            <Button x:Name="SaveButton" Content="Save" Margin="10,10" Click="SaveButton_Click" Width="90" BorderBrush="#FF481F72" Background="#FFFEA3B6"/>
+            <Button x:Name="CancelButton" Content="Cancel" Margin="10,10" Click="CancelButton_Click" Width="90" BorderBrush="#FF481F72" Background="#FFFEA3B6"/>
         </StackPanel>
     </StackPanel>
     

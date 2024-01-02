@@ -22,14 +22,14 @@
         </Grid.RowDefinitions>
 
 
-        <Button x:Name="chooseImageButton" Background="Transparent" Click="ImageButton_Click"  Width="180" Height="180" Grid.Row="0" Grid.Column="1" Grid.RowSpan="1">
+        <Button x:Name="chooseImageButton" Background="Transparent" Click="ImageButton_Click"  Width="180" Height="180" Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" BorderBrush="#FF481F72">
             <Image x:Name="avatar" RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding Avatar}" />
         </Button>
-        <TextBox BorderThickness="1" BorderBrush="Purple" Padding="5" Height="50" Text="{Binding CatName}" x:Name="categoryNameBox" Grid.Row="1" Margin="80,31,80,211" materialDesign:HintAssist.Hint="Category name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" />
+        <TextBox BorderThickness="1" BorderBrush="#FF481F72" Padding="5" Height="50" Text="{Binding CatName}" x:Name="categoryNameBox" Grid.Row="1" Margin="80,31,80,211" materialDesign:HintAssist.Hint="Category name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" />
 
 
         <StackPanel Height="40" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center"/>
-        <Button x:Name="cancelButton" Click="cancelButton_Click"  Content="Cancel" Grid.Column="1" Margin="80,134,279,126" Grid.Row="1"/>
-        <Button x:Name="addButton" Click="editButton_Click"  Content="Edit category" Margin="268,134,80,126" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="cancelButton" Click="cancelButton_Click"  Content="Cancel" Grid.Column="1" Margin="80,134,279,126" Grid.Row="1" BorderBrush="#FF481F72" Background="#FFFEA3B6"/>
+        <Button x:Name="addButton" Click="editButton_Click"  Content="Edit category" Margin="268,134,80,126" Grid.Column="1" Grid.Row="1" BorderBrush="#FF481F72" Background="#FFFEA3B6"/>
     </Grid>
 </Window>

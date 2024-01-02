@@ -19,7 +19,7 @@
             <Button x:Name="AddButton"
                     Click="AddButton_Click"                    
                     Margin="0 0 10 0"
-                    Background="DeepPink"
+                    Background="#FFFEA3B6"
                     materialDesign:ButtonAssist.CornerRadius="5">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">

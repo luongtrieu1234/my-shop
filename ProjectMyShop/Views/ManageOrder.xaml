@@ -22,7 +22,7 @@
                     <StackPanel Orientation="Horizontal" Margin="0,20">
                         <Button Name="AddButton" Click="AddButton_Click" 
                             materialDesign:ButtonAssist.CornerRadius="5"
-                            Background="DeepPink"
+                            Background="#FFFEA3B6"
                             materialDesign:ShadowAssist.ShadowEdges="All"
                             BorderBrush="DeepPink"
                             Margin="5">
@@ -61,7 +61,7 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
-                        <TextBlock Text="From" VerticalAlignment="Center" FontWeight="Bold" Foreground="MediumPurple" Margin="10,0"/>
+                        <TextBlock Text="From" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFFEA3B6" Margin="10,0"/>
                         <DatePicker Name="FromDatePicker"  IsTodayHighlighted="True" AutomationProperties.IsOffscreenBehavior="Onscreen">
                             <DatePicker.CalendarStyle>
                                 <Style TargetType="Calendar" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
@@ -75,7 +75,7 @@
                                 </Style>
                             </DatePicker.CalendarStyle>
                         </DatePicker>
-                        <TextBlock Text="To" VerticalAlignment="Center" FontWeight="Bold" Foreground="MediumPurple" Margin="10,0"/>
+                        <TextBlock Text="To" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFFEA3B6" Margin="10,0"/>
                         <DatePicker Name="ToDatePicker" IsTodayHighlighted="True">
                             <DatePicker.CalendarStyle>
                                 <Style TargetType="Calendar" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
@@ -91,7 +91,7 @@
                         </DatePicker>
 
                         <Button Name="FilterButton" Click="FilterButton_Click" Margin="10,0"
-                            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}">
+                            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" BorderBrush="#FFFEA3B6" Background="#FFFEA3B6">
                             <Button.Content>
                                 <materialDesign:PackIcon Kind="Filter"/>
                             </Button.Content>
@@ -234,12 +234,12 @@
 
                         <Button x:Name="FirstButton" Content="&lt;&lt;" Margin="0,0,10,0"
                                 Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
-                                Click="FirstButton_Click"/>
+                                Click="FirstButton_Click" Background="#FFFEA3B6"/>
 
                         <Button x:Name="PreviousButton" 
                                 Content="&lt;"
                                 Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
-                                Click="PreviousButton_Click"
+                                Click="PreviousButton_Click" Background="#FFFEA3B6"
                     />
 
                         <TextBlock x:Name="CurrentPageText" Text="1" VerticalAlignment="Center" FontWeight="Bold" Foreground="Gray" Padding="10,0,0,0"></TextBlock>
@@ -248,11 +248,11 @@
 
                         <Button x:Name="NextButton" Content="&gt;"
                                 Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
-                                Click="NextButton_Click"/>
+                                Click="NextButton_Click" Background="#FFFEA3B6"/>
 
                         <Button x:Name="LastButton" Content="&gt;&gt;" Margin="10,0,0,0"
                                 Click="LastButton_Click"
-                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}" Background="#FFFEA3B6"
                                 />
 
                     </StackPanel>

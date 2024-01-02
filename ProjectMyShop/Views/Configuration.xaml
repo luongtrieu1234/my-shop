@@ -47,8 +47,8 @@
 
         </StackPanel>
 
-        <Button Height="30" Width="100" x:Name="cancelButton" Click="cancelButton_Click"  Content="Cancel" Grid.Column="1" Grid.Row="1" Margin="59,206,354,72" />
-        <Button Height="30" Width="100" x:Name="saveButton" Click="saveButton_Click"  Content="Save" Grid.Column="1" Grid.Row="1" Margin="206,206,207,72" />
+        <Button Height="30" Width="100" x:Name="cancelButton" Click="cancelButton_Click"  Content="Cancel" Grid.Column="1" Grid.Row="1" Margin="59,206,354,72" Background="#FFFEA3B6" BorderBrush="#FF481F72" />
+        <Button Height="30" Width="100" x:Name="saveButton" Click="saveButton_Click"  Content="Save" Grid.Column="1" Grid.Row="1" Margin="206,206,207,72" BorderBrush="#FF481F72" Background="#FFFEA3B6" />
 
     </Grid>
 </Page>

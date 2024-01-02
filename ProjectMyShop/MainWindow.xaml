@@ -9,7 +9,7 @@
         WindowStartupLocation="CenterScreen" 
         Title="MainWindow" Height="650" Width="1100"
         Loaded="Window_Loaded">
-    <Grid x:Name="layoutContainer">
+    <Grid x:Name="layoutContainer" Background="#FFD6E4F3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="1*"/>
@@ -21,11 +21,11 @@
             <RowDefinition Height="12*"/>
         </Grid.RowDefinitions>
         <!--Background-->
-        <Image Name="background"
+        <!--<Image Name="background"
                Grid.ColumnSpan="3"
                Grid.RowSpan="3"
                Stretch="UniformToFill"
-               Source="{DynamicResource Background}"/>
+               Source="{DynamicResource Background}" OpacityMask="#FFD47171"/>-->
         <!--Logo-->
         <StackPanel
                VerticalAlignment="Center"
@@ -37,8 +37,8 @@
 
         <!--List of button-->
         <StackPanel Grid.Row="2" Margin="0,10,0,0">
-            <Button x:Name="dashboardButton" Click="dashboardButton_Click"  Background="{DynamicResource MyPinkGradient}" materialDesign:ButtonAssist.CornerRadius="5" 
-                    Height="60">
+            <Button x:Name="dashboardButton" Click="dashboardButton_Click"  Background="#FFFEA3B6" materialDesign:ButtonAssist.CornerRadius="5" 
+                    Height="60" BorderBrush="#FF481F72">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Home" Width="25" Height="25"/>
@@ -46,8 +46,8 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button x:Name="categoriesButton" Click="categoriesButton_Click"  Background="{DynamicResource MyPinkGradient}" materialDesign:ButtonAssist.CornerRadius="5"
-                    Height="60">
+            <Button x:Name="categoriesButton" Click="categoriesButton_Click"  Background="#FFFEA3B6" materialDesign:ButtonAssist.CornerRadius="5"
+                    Height="60" BorderBrush="#FF481F72">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Category" Width="25" Height="25"/>
@@ -55,8 +55,8 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button x:Name="productButton" Click="productButton_Click"  Background="{DynamicResource MyPinkGradient}" materialDesign:ButtonAssist.CornerRadius="5"
-                    Height="60">
+            <Button x:Name="productButton" Click="productButton_Click"  Background="#FFFEA3B6" materialDesign:ButtonAssist.CornerRadius="5"
+                    Height="60" BorderBrush="#FF481F72">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Reproduction" Width="25" Height="25"/>
@@ -64,22 +64,22 @@
                     </StackPanel>
                 </Button.Content>
             </Button>
-            <Button x:Name="orderButton" Click="orderButton_Click"  Background="{DynamicResource MyPinkGradient}" materialDesign:ButtonAssist.CornerRadius="5"
-                    Height="60">
+            <Button x:Name="orderButton" Click="orderButton_Click"  Background="#FFFEA3B6" materialDesign:ButtonAssist.CornerRadius="5"
+                    Height="60" BorderBrush="#FF481F72">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Receipt" Width="25" Height="25" />
                     <TextBlock VerticalAlignment="Center" FontSize="18">Manage orders</TextBlock>
                 </StackPanel>
             </Button>
-            <Button x:Name="statButton" Click="statButton_Click"  Background="{DynamicResource MyPinkGradient}" materialDesign:ButtonAssist.CornerRadius="5"
-                    Height="60">
+            <Button x:Name="statButton" Click="statButton_Click"  Background="#FFFEA3B6" materialDesign:ButtonAssist.CornerRadius="5"
+                    Height="60" BorderBrush="#FF481F72">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="BarChart" Width="25" Height="25" />
                     <TextBlock VerticalAlignment="Center" FontSize="18">Statistic</TextBlock>
                 </StackPanel>
             </Button>
-            <Button x:Name="configButton" Click="configButton_Click" Background="{DynamicResource MyPinkGradient}" materialDesign:ButtonAssist.CornerRadius="5"
-                    Height="60">
+            <Button x:Name="configButton" Click="configButton_Click" Background="#FFFEA3B6" materialDesign:ButtonAssist.CornerRadius="5"
+                    Height="60" BorderBrush="#FF481F72">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Gear" Width="25" Height="25"/>
                     <TextBlock VerticalAlignment="Center" FontSize="18">Configuration</TextBlock>

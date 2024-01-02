@@ -19,8 +19,8 @@
             <Button x:Name="ImportButton"
                     Click="ImportButton_Click"
                     Margin="0 0 10 0"
-                    Background="DeepPink"
-                    materialDesign:ButtonAssist.CornerRadius="5">
+                    Background="#FFFEA3B6"
+                    materialDesign:ButtonAssist.CornerRadius="5" BorderBrush="#FF481F72">
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="Gear"/>
@@ -31,8 +31,8 @@
             <Button Name="AddButton"
                     Click="AddMenuItem_Click"
                     Margin="0 0 10 0"
-                    Background="DeepPink"
-                    materialDesign:ButtonAssist.CornerRadius="5"
+                    Background="#FFFEA3B6"
+                    materialDesign:ButtonAssist.CornerRadius="5" BorderBrush="#FF481F72"
                     >
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
@@ -129,13 +129,13 @@
                                  materialDesign:ShadowAssist.ShadowDepth="Depth0"
                                  Grid.Column="0" Margin="0,0,-110,0">
                         <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="From" VerticalAlignment="Center" FontWeight="Bold" Foreground="MediumPurple" Margin="10,0"/>
+                            <TextBlock Text="From" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFFEA3B6" Margin="10,0"/>
                             <TextBox Width="45" Name="fromTextbox" Height="30" Padding="0 6 0 0" Text="0" Foreground="Black" HorizontalAlignment="Center"/>
-                            <TextBlock Text="To" VerticalAlignment="Center" FontWeight="Bold" Foreground="MediumPurple" Margin="10,0"/>
+                            <TextBlock Text="To" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFFEA3B6" Margin="10,0"/>
                             <TextBox Width="45" Name="toTextbox" Height="30" Padding="0 6 0 0" Text="0" Foreground="Black" HorizontalAlignment="Center"/>
 
                             <Button Name="FilterButton" Click="FilterButton_Click" Margin="5 0 0 0"
-                        Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}">
+                        Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" BorderBrush="#FFFEA3B6" Background="#FFFEA3B6">
                                 <Button.Content>
                                     <materialDesign:PackIcon Kind="Filter"/>
                                 </Button.Content>
@@ -211,9 +211,9 @@
             </ListView>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1">
-                <Button x:Name="previousButton" Width="60" Height="30" Content="&lt;" Click="previousButton_Click" IsEnabled="False" />
+                <Button x:Name="previousButton" Width="60" Height="30" Content="&lt;" Click="previousButton_Click" IsEnabled="False" Background="#FFE93C60" BorderBrush="#FF481F72" />
                 <TextBlock Name="currentPagingTextBlock" Width="80" Text="0" TextAlignment="Center" VerticalAlignment="Center"/>
-                <Button x:Name="nextButton" Width="60" Height="30" Content="&gt;" Click="nextButton_Click"/>
+                <Button x:Name="nextButton" Width="60" Height="30" Content="&gt;" Click="nextButton_Click" Background="#FFFEA3B6" BorderBrush="#FF481F72"/>
             </StackPanel>
         </Grid>
     </DockPanel>

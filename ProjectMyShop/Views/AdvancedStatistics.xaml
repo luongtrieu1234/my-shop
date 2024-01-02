@@ -108,7 +108,7 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <TextBlock Text="Top 5 Best-selling Phones" FontSize="20" Background="MediumPurple" Foreground="White"/>
+                <TextBlock Text="Top 5 Best-selling Phones" FontSize="20" Background="#FFFEA3B6" Foreground="White"/>
             </DockPanel>
             <DataGrid Grid.Row="0" x:Name="PhoneDataGrid" 
                     AutoGenerateColumns="False" ColumnHeaderHeight="30" HeadersVisibility="Column" 
@@ -116,7 +116,7 @@
                     CanUserResizeColumns="False" 
                     BorderBrush="Gray"
                     BorderThickness="1"
-                    VerticalScrollBarVisibility="Auto"  AllowDrop="True"  GridLinesVisibility="None" HorizontalGridLinesBrush="Gray" SelectionMode="Single">
+                    VerticalScrollBarVisibility="Auto"  AllowDrop="True"  GridLinesVisibility="None" HorizontalGridLinesBrush="Gray" SelectionMode="Single" Background="#FFFDEDED" Foreground="#FFFDEDED">
 
                 <DataGrid.Columns >
                     <DataGridTemplateColumn Header="  #ID" IsReadOnly="True">
