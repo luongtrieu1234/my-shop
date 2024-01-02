@@ -122,10 +122,10 @@
 
         </materialDesign:Card>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="3">
-            <TextBlock Text="Top 5 phone (nearly) out of stock" Padding="10 0 0 0" FontSize="20" Background="#FFFEA3B6" Foreground="White"/>
+            <TextBlock Text="Top 5 Product (nearly) out of stock" Padding="10 0 0 0" FontSize="20" Background="#FFFEA3B6" Foreground="White"/>
             <DataGrid Grid.Row="0" x:Name="PhoneDataGrid" 
                     AutoGenerateColumns="False" ColumnHeaderHeight="30" HeadersVisibility="Column" 
-                    RowHeaderWidth="100" SelectionChanged="PhoneDataGrid_SelectionChanged" 
+                    RowHeaderWidth="100" SelectionChanged="ProductDataGrid_SelectionChanged" 
                     CanUserResizeColumns="False" 
                     BorderBrush="Gray"
                     BorderThickness="1"
@@ -149,11 +149,11 @@
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
                     </DataGridTemplateColumn>
-                    <DataGridTemplateColumn Header="       Phone Name" IsReadOnly="True">
+                    <DataGridTemplateColumn Header="   Product Name" IsReadOnly="True">
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding PhoneName}"></TextBlock>
+                                    <TextBlock Text="{Binding ProductName}"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

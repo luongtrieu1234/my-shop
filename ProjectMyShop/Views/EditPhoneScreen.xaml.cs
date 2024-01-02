@@ -22,11 +22,11 @@ namespace ProjectMyShop.Views
     /// </summary>
     public partial class EditPhoneScreen : Window
     {
-        public Phone EditedPhone { get; set; }
-        public EditPhoneScreen(Phone p)
+        public Product EditedPhone { get; set; }
+        public EditPhoneScreen(Product p)
         {
             InitializeComponent();
-            EditedPhone = (Phone)p.Clone();
+            EditedPhone = (Product)p.Clone();
             this.DataContext = EditedPhone;
         }
 

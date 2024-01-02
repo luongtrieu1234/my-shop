@@ -85,7 +85,7 @@ namespace ProjectMyShop.DAO
         {
             string sqlFormattedDate = src.ToString("yyyy-MM-dd");
 
-            //var sql = "select convert(varchar, o.OrderDate) as OrderDate, convert(varchar,cast(SUM(do.Quantity * p.SoldPrice) as money), 1) as Revenue from DetailOrder do join Phone p on do.PhoneID = p.ID join Orders o on do.OrderID = o.ID where OrderDate < @SelectedDate group by o.OrderDate order by o.OrderDate asc;";
+            //var sql = "select convert(varchar, o.OrderDate) as OrderDate, convert(varchar,cast(SUM(do.Quantity * p.SoldPrice) as money), 1) as Revenue from DetailOrder do join Product p on do.PhoneID = p.ID join Orders o on do.OrderID = o.ID where OrderDate < @SelectedDate group by o.OrderDate order by o.OrderDate asc;";
             var sql = "select convert(varchar, o.OrderDate) as OrderDate, cast(SUM(do.Quantity * p.SoldPrice) AS decimal(13,4)) as Revenue from DetailOrder do join Phone p on do.PhoneID = p.ID join Orders o on do.OrderID = o.ID where OrderDate <= @SelectedDate group by o.OrderDate order by o.OrderDate asc;";
             var sqlParameter = new SqlParameter();
             sqlParameter.ParameterName = "@SelectedDate";

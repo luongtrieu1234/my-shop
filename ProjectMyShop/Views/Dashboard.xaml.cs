@@ -19,8 +19,8 @@ namespace ProjectMyShop.Views
         public int weekOrder { get; set; } = 0;
         public int monthOrder { get; set; } = 0;
 
-        List<Phone>? _phones = null;
-        PhoneBUS _phoneBUS = new PhoneBUS();
+        List<Product>? _products = null;
+        ProductBUS _productBUS = new ProductBUS();
         OrderBUS _orderBUS = new OrderBUS();
         public Dashboard()
         {
@@ -29,17 +29,17 @@ namespace ProjectMyShop.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            totalPhone = _phoneBUS.GetTotalPhone();
+            totalPhone = _productBUS.GetTotalPhone();
             weekOrder = _orderBUS.CountOrderByWeek();
             monthOrder = _orderBUS.CountOrderByMonth();
-            _phones = _phoneBUS.Top5OutStock();
+            _products = _productBUS.Top5OutStock();
 
-            PhoneDataGrid.ItemsSource = _phones;
+            PhoneDataGrid.ItemsSource = _products;
             DataContext = this;
             AppConfig.SetValue(AppConfig.LastWindow, "Dashboard");
         }
 
-        private void PhoneDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ProductDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }
@@ -50,7 +50,7 @@ namespace ProjectMyShop.Views
             int index = PhoneDataGrid.Items.IndexOf(row.Item);
             if (index != -1)
             {
-                Phone p = _phones![index];
+                Product p = _products![index];
                 var screen = new AddStockScreen(p);
                 var result = screen.ShowDialog();
                 if (result == true)
@@ -58,11 +58,11 @@ namespace ProjectMyShop.Views
                     try
                     {
                         var newPhone = screen.newPhone;
-                        _phoneBUS.updatePhone(p.ID, newPhone);
+                        _productBUS.updatePhone(p.ID, newPhone);
 
                         // reload page
-                        _phones = _phoneBUS.Top5OutStock();
-                        PhoneDataGrid.ItemsSource = _phones;
+                        _products = _productBUS.Top5OutStock();
+                        PhoneDataGrid.ItemsSource = _products;
                     }
                     catch (Exception ex)
                     {

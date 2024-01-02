@@ -21,11 +21,11 @@ namespace ProjectMyShop.Views
     /// </summary>
     public partial class AddStockScreen : Window
     {
-        public Phone newPhone { get; set; }
-        public AddStockScreen(Phone p)
+        public Product newPhone { get; set; }
+        public AddStockScreen(Product p)
         {
             InitializeComponent();
-            newPhone = (Phone)p.Clone();
+            newPhone = (Product)p.Clone();
             Debug.WriteLine(newPhone.Description);
             this.DataContext = newPhone;
         }

@@ -25,7 +25,7 @@ namespace ProjectMyShop.DAO
 
             var result = new List<DetailOrder>();
 
-            var _phoneBUS = new PhoneBUS();
+            var _phoneBUS = new ProductBUS();
             while (reader.Read())
             {
                 var OrderID = reader.GetInt32("OrderID");

@@ -202,7 +202,7 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Image RenderOptions.BitmapScalingMode="HighQuality" Grid.RowSpan="2" Width="50" Height="50" Source="{Binding Avatar}"/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding PhoneName}" Style="{DynamicResource MaterialDesignCaptionTextBlock}"/>
+                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ProductName}" Style="{DynamicResource MaterialDesignCaptionTextBlock}"/>
                             <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SoldPrice, Converter={StaticResource currencyConverter}}" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}"/>
                             <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="30 10 0 0" Text="{Binding Description}" Style="{DynamicResource MaterialDesignHelperTextBlock}"/>
                         </Grid>

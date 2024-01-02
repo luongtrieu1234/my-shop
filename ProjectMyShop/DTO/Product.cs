@@ -7,10 +7,10 @@ using System.Windows.Media.Imaging;
 
 namespace ProjectMyShop.DTO
 {
-    public class Phone: ICloneable
+    public class Product: ICloneable
     {
         public int ID { get; set; }
-        public string PhoneName { get; set; } = "";
+        public string ProductName { get; set; } = "";
         public string Manufacturer { get; set; } = "";
         public int Stock { get; set; }
         public string Description { get; set; } = "";
@@ -26,7 +26,7 @@ namespace ProjectMyShop.DTO
         }
     }
 
-    public class BestSellingPhone : Phone
+    public class BestSellingPhone : Product
     {
         public int Quantity { get; set; }
     }

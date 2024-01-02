@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace ProjectMyShop.BUS
 {
-    internal class PhoneBUS
+    internal class ProductBUS
     {
-        private PhoneDAO _phoneDAO;
+        private ProductDAO _phoneDAO;
 
-        public PhoneBUS()
+        public ProductBUS()
         {
-            _phoneDAO = new PhoneDAO();
+            _phoneDAO = new ProductDAO();
             if (_phoneDAO.CanConnect())
             {
                 _phoneDAO.Connect();
@@ -25,19 +25,19 @@ namespace ProjectMyShop.BUS
 
         public int GetTotalPhone()
         {
-            return _phoneDAO.getTotalPhone();
+            return _phoneDAO.getTotalProduct();
         }
-        public List<Phone> Top5OutStock()
+        public List<Product> Top5OutStock()
         {
             return _phoneDAO.GetTop5OutStock();
         }
 
-        public List<Phone> getPhonesAccordingToSpecificCategory(int srcCategoryID)
+        public List<Product> getPhonesAccordingToSpecificCategory(int srcCategoryID)
         {
-            return _phoneDAO.getPhonesAccordingToSpecificCategory(srcCategoryID);
+            return _phoneDAO.getProductsAccordingToSpecificCategory(srcCategoryID);
         }
 
-        public void addPhone(Phone phone)
+        public void addPhone(Product phone)
         {
             if (phone.Stock < 0)
             {
@@ -54,11 +54,11 @@ namespace ProjectMyShop.BUS
                 phone.ID = _phoneDAO.GetLastestInsertID();
             }
         }
-        public void removePhone(Phone phone)
+        public void removePhone(Product phone)
         {
-            _phoneDAO.deletePhone(phone.ID);
+            _phoneDAO.deleteProduct(phone.ID);
         }
-        public void updatePhone(int ID, Phone phone)
+        public void updatePhone(int ID, Product phone)
         {
             Debug.WriteLine(phone.Stock);
             if (phone.Stock < 0)
@@ -71,27 +71,27 @@ namespace ProjectMyShop.BUS
             }
             else
             {
-                _phoneDAO.updatePhone(ID, phone);
+                _phoneDAO.updateProduct(ID, phone);
             }
         }
 
         public List<BestSellingPhone> getBestSellingPhonesInWeek(DateTime src)
         {
-            return _phoneDAO.getBestSellingPhonesInWeek(src);
+            return _phoneDAO.getBestSellingProductsInWeek(src);
         }
 
         public List<BestSellingPhone> getBestSellingPhonesInMonth(DateTime src)
         {
-            return _phoneDAO.getBestSellingPhonesInMonth(src);
+            return _phoneDAO.getBestSellingProductsInMonth(src);
         }
 
         public List<BestSellingPhone> getBestSellingPhonesInYear(DateTime src)
         {
-            return _phoneDAO.getBestSellingPhonesInYear(src);
+            return _phoneDAO.getBestSellingProductsInYear(src);
         }
-        public Phone? getPhoneByID(int phoneID)
+        public Product? getPhoneByID(int phoneID)
         {
-            return _phoneDAO.getPhoneByID(phoneID);
+            return _phoneDAO.getProductByID(phoneID);
         }
     }
 }

@@ -32,8 +32,8 @@ namespace ProjectMyShop.Views
         {
             InitializeComponent();
         }
-        private PhoneBUS _phoneBus = new PhoneBUS();
-        PhoneViewModel _vm = new PhoneViewModel();
+        private ProductBUS _phoneBus = new ProductBUS();
+        ProductViewModel _vm = new ProductViewModel();
         List<Category>? _categories = null;
         int _totalItems = 0;
         int _currentPage = 1;
@@ -50,10 +50,10 @@ namespace ProjectMyShop.Views
                 previousButton.IsEnabled = false;
 
                 _vm.SelectedPhones.Clear();
-                BindingList<Phone> phones = new BindingList<Phone>();
-                foreach (Phone phone in _vm.Phones)
+                BindingList<Product> phones = new BindingList<Product>();
+                foreach (Product phone in _vm.Products)
                 {
-                    if(phone.PhoneName.ToLower().Contains(search_text.ToLower()))
+                    if(phone.ProductName.ToLower().Contains(search_text.ToLower()))
                     {
                         phones.Add(phone);
                     }
@@ -91,12 +91,12 @@ namespace ProjectMyShop.Views
             _currentPage = 0;
             _totalPages = 0;
             var catBUS = new CategoryBUS();
-            var phoneBUS = new PhoneBUS();
+            var phoneBUS = new ProductBUS();
             _categories = catBUS.getCategoryList();
             categoriesListView.ItemsSource = _categories;
             foreach (var category in _categories)
             {
-                category.Phones = new BindingList<Phone>(phoneBUS.getPhonesAccordingToSpecificCategory(category.ID));
+                category.Phones = new BindingList<Product>(phoneBUS.getPhonesAccordingToSpecificCategory(category.ID));
             }
             if(_categories.Count > 0)
             {
@@ -125,14 +125,14 @@ namespace ProjectMyShop.Views
             }
             _currentPage = 1;
             previousButton.IsEnabled = false;
-            _vm.Phones = _categories[i].Phones;
-            _vm.SelectedPhones = _vm.Phones
+            _vm.Products = _categories[i].Phones;
+            _vm.SelectedPhones = _vm.Products
                 .Skip((_currentPage - 1) * _rowsPerPage)
                 .Take(_rowsPerPage).ToList();
 
-            _totalItems = _vm.Phones.Count;
-            _totalPages = _vm.Phones.Count / _rowsPerPage +
-                (_vm.Phones.Count % _rowsPerPage == 0 ? 0 : 1);
+            _totalItems = _vm.Products.Count;
+            _totalPages = _vm.Products.Count / _rowsPerPage +
+                (_vm.Products.Count % _rowsPerPage == 0 ? 0 : 1);
             _currentPage = _totalPages > 0 ? 1 : 0;
             currentPagingTextBlock.Text = $"{_currentPage}/{_totalPages}";
 
@@ -157,13 +157,13 @@ namespace ProjectMyShop.Views
 
         private void editMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var p = (Phone)phonesListView.SelectedItem;
+            var p = (Product)phonesListView.SelectedItem;
             var screen = new EditPhoneScreen(p);
             var result = screen.ShowDialog();
             if (result == true)
             {
                 var info = screen.EditedPhone;
-                p.PhoneName = info.PhoneName;
+                p.ProductName = info.ProductName;
                 p.Manufacturer = info.Manufacturer;
                 p.SoldPrice = info.SoldPrice;
                 p.BoughtPrice = info.BoughtPrice;
@@ -181,8 +181,8 @@ namespace ProjectMyShop.Views
                     MessageBox.Show(screen, ex.Message);
                 }
 
-                //_vm.Phones = _categories[i].Phones;
-                //_vm.SelectedPhones = _vm.Phones
+                //_vm.Products = _categories[i].Products;
+                //_vm.SelectedPhones = _vm.Products
                 //    .Skip((_currentPage - 1) * _rowsPerPage)
                 //    .Take(_rowsPerPage).ToList();
 
@@ -192,19 +192,19 @@ namespace ProjectMyShop.Views
 
         private void deleteMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var p = (Phone)phonesListView.SelectedItem;
-            var result = MessageBox.Show($"Bạn thật sự muốn xóa điện thoại {p.PhoneName} - {p.Manufacturer}?",
+            var p = (Product)phonesListView.SelectedItem;
+            var result = MessageBox.Show($"Bạn thật sự muốn xóa điện thoại {p.ProductName} - {p.Manufacturer}?",
                 "Xác nhận xóa", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (MessageBoxResult.Yes == result)
             {
-                //_phones.Remove(p);
-                _vm.Phones.Remove(p);
+                //_products.Remove(p);
+                _vm.Products.Remove(p);
                 _categories[i].Phones.Remove(p);
                 _phoneBus.removePhone(p);
                 searchTextBox_TextChanged(sender, null);
                 //_vm.SelectedPhones.Remove(p);
 
-                //_vm.SelectedPhones = _vm.Phones
+                //_vm.SelectedPhones = _vm.Products
                 //    .Skip((_currentPage - 1) * _rowsPerPage)
                 //    .Take(_rowsPerPage).ToList();
 
@@ -212,9 +212,9 @@ namespace ProjectMyShop.Views
 
 
                 //// Tính toán lại thông số phân trang
-                //_totalItems = _vm.Phones.Count;
-                //_totalPages = _vm.Phones.Count / _rowsPerPage +
-                //    (_vm.Phones.Count % _rowsPerPage == 0 ? 0 : 1);
+                //_totalItems = _vm.Products.Count;
+                //_totalPages = _vm.Products.Count / _rowsPerPage +
+                //    (_vm.Products.Count % _rowsPerPage == 0 ? 0 : 1);
 
                 //currentPagingTextBlock.Text = $"{_currentPage}/{_totalPages}";
                 //if (_currentPage + 1 > _totalPages)
@@ -230,7 +230,7 @@ namespace ProjectMyShop.Views
         {
             nextButton.IsEnabled = true;
             _currentPage--;
-            _vm.SelectedPhones = _vm.Phones
+            _vm.SelectedPhones = _vm.Products
                 .Skip((_currentPage - 1) * _rowsPerPage)
                 .Take(_rowsPerPage)
                 .ToList();
@@ -248,7 +248,7 @@ namespace ProjectMyShop.Views
         {
             previousButton.IsEnabled = true;
             _currentPage++;
-            _vm.SelectedPhones = _vm.Phones
+            _vm.SelectedPhones = _vm.Products
                     .Skip((_currentPage - 1) * _rowsPerPage)
                     .Take(_rowsPerPage)
                     .ToList();
@@ -274,7 +274,7 @@ namespace ProjectMyShop.Views
                 string filename = screen.FileName;
 
                 var workbook = new Workbook(filename);
-                var _phoneBUS = new PhoneBUS();
+                var _phoneBUS = new ProductBUS();
                 var _cateBUS = new CategoryBUS();
 
                 var tabs = workbook.Worksheets;
@@ -284,7 +284,7 @@ namespace ProjectMyShop.Views
                     Category cat = new Category()
                     {
                         CatName = tab.Name,
-                        Phones = new BindingList<Phone>()
+                        Phones = new BindingList<Product>()
                     };
                     _cateBUS.AddCategory(cat);
 
@@ -309,9 +309,9 @@ namespace ProjectMyShop.Views
                         }
                         string avaURL = tab.Cells[$"J{row}"].StringValue;
 
-                        var p = new Phone()
+                        var p = new Product()
                         {
-                            PhoneName = name,
+                            ProductName = name,
                             Manufacturer = manu,
                             BoughtPrice = boughtprice,
                             SoldPrice = soldprice,
@@ -330,7 +330,7 @@ namespace ProjectMyShop.Views
                 Debug.WriteLine(_categories.Count);
                 foreach(var category in _categories)
                 {
-                    category.Phones = new BindingList<Phone>(_phoneBUS.getPhonesAccordingToSpecificCategory(category.ID));
+                    category.Phones = new BindingList<Product>(_phoneBUS.getPhonesAccordingToSpecificCategory(category.ID));
                 }
                 categoriesListView.ItemsSource = _categories;
                 loadPhones();
@@ -344,7 +344,7 @@ namespace ProjectMyShop.Views
             if (result == true)
             {
                 var newPhone = screen.newPhone;
-                Debug.WriteLine(newPhone.PhoneName);
+                Debug.WriteLine(newPhone.ProductName);
                 var catIndex = screen.catIndex;
                 if(catIndex >= 0)
                 {
@@ -373,8 +373,8 @@ namespace ProjectMyShop.Views
                 previousButton.IsEnabled = false;
 
                 _vm.SelectedPhones.Clear();
-                BindingList<Phone> phones = new BindingList<Phone>();
-                foreach (Phone phone in _vm.Phones)
+                BindingList<Product> phones = new BindingList<Product>();
+                foreach (Product phone in _vm.Products)
                 {
                     if (phone.SoldPrice >= fromPrice && phone.SoldPrice <= toPrice)
                     {

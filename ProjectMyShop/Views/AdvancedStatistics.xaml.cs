@@ -40,7 +40,7 @@ namespace ProjectMyShop.Views
 
             for (int i = 0; i < phones.Count(); i++)
             {
-               System.Diagnostics.Debug.WriteLine(phones[i].PhoneName);
+               System.Diagnostics.Debug.WriteLine(phones[i].ProductName);
             }
 
             PhoneDataGrid.ItemsSource = phones;
@@ -60,7 +60,7 @@ namespace ProjectMyShop.Views
         public List<BestSellingPhone> phones;
         private Statistics _statisticsPage;
         private SpecificStatistics _specificPage;
-        PhoneBUS _phoneBUS = new PhoneBUS();
+        ProductBUS _phoneBUS = new ProductBUS();
 
         private void statisticsCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

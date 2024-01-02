@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace ProjectMyShop.ViewModels
 {
-    internal class PhoneViewModel : INotifyPropertyChanged
+    internal class ProductViewModel : INotifyPropertyChanged
     {
-        public BindingList<Phone> Phones { get; set; } = new BindingList<Phone>();
-        public List<Phone> SelectedPhones { get; set; } = new List<Phone>();
+        public BindingList<Product> Products { get; set; } = new BindingList<Product>();
+        public List<Product> SelectedPhones { get; set; } = new List<Product>();
 
         public event PropertyChangedEventHandler? PropertyChanged;
     }

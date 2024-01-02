@@ -22,10 +22,10 @@ namespace ProjectMyShop.Views
     /// </summary>
     public partial class AddPhoneOrder : Window
     {
-        PhoneBUS _phoneBus;
+        ProductBUS _phoneBus;
         CategoryBUS _categoryBus;
         List<Category> _categories;
-        List<Phone> _selectedPhones;
+        List<Product> _selectedPhones;
         public DetailOrder detailOrder;
 
 
@@ -54,7 +54,7 @@ namespace ProjectMyShop.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            _phoneBus = new PhoneBUS();
+            _phoneBus = new ProductBUS();
             _categoryBus = new CategoryBUS();
 
             _categories = _categoryBus.getCategoryList();
@@ -125,7 +125,7 @@ namespace ProjectMyShop.Views
                 detailOrder.Phone = _selectedPhones[(int)i];
                 detailOrder.Quantity = 0;
 
-                PhoneTextBox.Text = detailOrder.Phone.PhoneName;
+                PhoneTextBox.Text = detailOrder.Phone.ProductName;
                 QuantityTextBox.Text = detailOrder.Quantity.ToString();
             }
         }

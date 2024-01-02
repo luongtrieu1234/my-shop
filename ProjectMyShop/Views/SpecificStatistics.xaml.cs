@@ -35,7 +35,7 @@ namespace ProjectMyShop.Views
 
             _statisticsBUS = new StatisticsBUS();
             _categoryBUS = new CategoryBUS();
-            _phoneBUS = new PhoneBUS();
+            _phoneBUS = new ProductBUS();
 
             categories = _categoryBUS.getCategoryList();
             categoriesCombobox.ItemsSource = categories;
@@ -43,7 +43,7 @@ namespace ProjectMyShop.Views
             if (categories.Count() > 0)
                 phones = _phoneBUS.getPhonesAccordingToSpecificCategory(categories[categoriesFigureIndex].ID);
             else
-                phones = new List<Phone> { };
+                phones = new List<Product> { };
 
             productCombobox.ItemsSource = phones;
 
@@ -67,7 +67,7 @@ namespace ProjectMyShop.Views
 
         private StatisticsBUS _statisticsBUS;
         private CategoryBUS _categoryBUS;
-        private PhoneBUS _phoneBUS;
+        private ProductBUS _phoneBUS;
         public int statisticsFigureIndex { get; set; } = 1;
         public int bargraphFigureIndex { get; set; } = 0;
         public int tabSelectedIndex { get; set; } = 0;
@@ -77,7 +77,7 @@ namespace ProjectMyShop.Views
         public List<string> figureValues = new List<string>() { "Daily", "Weekly", "Monthly", "Yearly" };
         public List<string> statisticsFigureValues = new List<string>() { "General", "Specific", "Advanced" };
         public List<Category> categories;
-        public List<Phone> phones;
+        public List<Product> phones;
         private Statistics _statisticsPage;
         private AdvancedStatistics _advancedPage;
 

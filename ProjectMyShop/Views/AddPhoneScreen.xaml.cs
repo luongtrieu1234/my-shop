@@ -22,15 +22,15 @@ namespace ProjectMyShop.Views
     /// </summary>
     public partial class AddPhoneScreen : Window
     {
-        public Phone newPhone { get; set; }
+        public Product newPhone { get; set; }
         public int catIndex { get; set; } = -1;
-        PhoneBUS _phoneBUS { get; set; }
+        ProductBUS _phoneBUS { get; set; }
         
 
         public AddPhoneScreen(List<Category> category)
         {
             InitializeComponent();
-            newPhone = new Phone();
+            newPhone = new Product();
             this.DataContext = newPhone;
             categoryCombobox.ItemsSource = category;
         }
@@ -49,9 +49,9 @@ namespace ProjectMyShop.Views
         {
             // Check validity
 
-            //Phone phone = new Phone()
+            //Product phone = new Product()
             //{
-            //    PhoneName = "Galaxy",
+            //    ProductName = "Galaxy",
             //    Manufacturer = "Samsung",
             //    BoughtPrice = 500,
             //    SoldPrice = 700,

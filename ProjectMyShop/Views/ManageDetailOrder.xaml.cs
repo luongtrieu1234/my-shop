@@ -84,7 +84,7 @@ namespace ProjectMyShop.Views
             return DateOnly.Parse(dateTime.Date.ToShortDateString());
         }
 
-        bool isInPhoneList(Phone phone)
+        bool isInPhoneList(Product phone)
         {
             bool result = false;
             if (order.DetailOrderList != null)
@@ -108,8 +108,8 @@ namespace ProjectMyShop.Views
 
         private void ChoosePhoneButton_Click(object sender, RoutedEventArgs e)
         {
-            detailOrder.Phone = new Phone();
-            detailOrder.Phone.PhoneName = "Choose a phone";
+            detailOrder.Phone = new Product();
+            detailOrder.Phone.ProductName = "Choose a phone";
             detailOrder.Quantity = 0;
             var screen = new AddPhoneOrder(detailOrder);
             if (screen.ShowDialog() == true)
@@ -123,7 +123,7 @@ namespace ProjectMyShop.Views
                 }
                 else
                 {
-                    MessageBox.Show($"{screen.detailOrder.Phone.PhoneName}'s already exists in detail order.\nChoose 'Update' instead", "Duplicate phone", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"{screen.detailOrder.Phone.ProductName}'s already exists in detail order.\nChoose 'Update' instead", "Duplicate phone", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 Reload();
             }
@@ -136,8 +136,8 @@ namespace ProjectMyShop.Views
             if (i != -1)
             {
 
-                detailOrder.Phone = new Phone();
-                detailOrder.Phone = (Phone)order.DetailOrderList[i].Phone.Clone();
+                detailOrder.Phone = new Product();
+                detailOrder.Phone = (Product)order.DetailOrderList[i].Phone.Clone();
                 detailOrder.Quantity = order.DetailOrderList[i].Quantity;
                 var screen = new AddPhoneOrder(detailOrder);
                 if (screen.ShowDialog() == true)
@@ -151,7 +151,7 @@ namespace ProjectMyShop.Views
                     }
                     else
                     {
-                        MessageBox.Show($"{screen.detailOrder.Phone.PhoneName}'s already exists in detail order.\nPlease choose another phone", "Duplicate phone", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show($"{screen.detailOrder.Phone.ProductName}'s already exists in detail order.\nPlease choose another phone", "Duplicate phone", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     Reload();
                 }
@@ -164,7 +164,7 @@ namespace ProjectMyShop.Views
 
             if (i != -1)
             {
-                var res = MessageBox.Show($"Are you sure to discard this phone: {order.DetailOrderList[i].Phone.PhoneName}?", "Delete phone from order", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var res = MessageBox.Show($"Are you sure to discard this phone: {order.DetailOrderList[i].Phone.ProductName}?", "Delete phone from order", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (res == MessageBoxResult.Yes)
                 {
                     _orderBUS.DeleteDetailOrder(order.DetailOrderList[i]);
