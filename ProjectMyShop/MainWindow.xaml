@@ -30,8 +30,9 @@
         <StackPanel
                VerticalAlignment="Center"
                Grid.RowSpan="2" Grid.ColumnSpan="2" Height="117" Margin="0,0,65,0">
-            <Image x:Name="logo"
-               Source="{DynamicResource Logo}" Height="117" Width="258"/>
+            <Label Height="117" FontSize="40" FontWeight="Bold" Background="#FFEBCACA" FontFamily="Arial Black" Foreground="#FFC62F9C" Content="MY SHOP" Width="257" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <!--<Image x:Name="logo"
+               Source="{DynamicResource Logo}" Height="117" Width="258"/>-->
         </StackPanel>
 
 
