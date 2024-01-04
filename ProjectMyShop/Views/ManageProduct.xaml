@@ -14,80 +14,82 @@
         <local1:AbsoluteConverter x:Key="absoluteConverter"/>
     </Page.Resources>
     <materialDesign:Card Background="White" UniformCornerRadius="10" materialDesign:ShadowAssist.ShadowEdges="All" Padding="10 10 0 0">
-    <DockPanel>
-        <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
-            <Button x:Name="ImportButton"
+        <DockPanel>
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                <Button x:Name="ImportButton"
                     Click="ImportButton_Click"
                     Margin="0 0 10 0"
                     Background="#FFFEA3B6"
                     materialDesign:ButtonAssist.CornerRadius="5" BorderBrush="#FF481F72">
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Gear"/>
-                        <TextBlock Margin="5 0" Text="Import"/>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
-            <Button Name="AddButton"
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Gear"/>
+                            <TextBlock Margin="5 0" Text="Import"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+                <Button Name="AddButton"
                     Click="AddMenuItem_Click"
                     Margin="0 0 10 0"
                     Background="#FFFEA3B6"
                     materialDesign:ButtonAssist.CornerRadius="5" BorderBrush="#FF481F72"
                     >
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="AddCircle"/>
-                        <TextBlock Text="Add" Margin="5 0"/>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
-        </StackPanel>
-        <Grid Name="mainContainer">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40*"/>
-                <ColumnDefinition Width="962*"/>
-                <ColumnDefinition Width="40*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="90*"/>
-                <RowDefinition Height="120*"/>
-                <RowDefinition Height="555*"/>
-                <RowDefinition Height="58*"/>
-            </Grid.RowDefinitions>
-            <Grid Name="searchContainer"
-              Grid.Column="0"
-                  Grid.ColumnSpan="2"
-              Grid.Row="0">
-
+                    <Button.Content>
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="AddCircle"/>
+                            <TextBlock Text="Add" Margin="5 0"/>
+                        </StackPanel>
+                    </Button.Content>
+                </Button>
+            </StackPanel>
+            <Grid Name="mainContainer">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="660*"/>
-                    <ColumnDefinition Width="177*"/>
-                    <ColumnDefinition Width="145*"/>
+                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="21*"/>
+                    <ColumnDefinition Width="130*"/>
+                    <ColumnDefinition Width="460*"/>
+                    <ColumnDefinition Width="25*"/>
                 </Grid.ColumnDefinitions>
-                <!-- Search box-->
-                <materialDesign:ColorZone Mode="Custom"
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="90*"/>
+                    <RowDefinition Height="120*"/>
+                    <RowDefinition Height="555*"/>
+                    <RowDefinition Height="58*"/>
+                </Grid.RowDefinitions>
+                <Grid Name="searchContainer"
+              Grid.Column="0"
+                  Grid.ColumnSpan="4"
+              Grid.Row="0" Margin="0,0,0,59" Grid.RowSpan="2">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="660*"/>
+                        <ColumnDefinition Width="177*"/>
+                        <ColumnDefinition Width="145*"/>
+                    </Grid.ColumnDefinitions>
+                    <!-- Search box-->
+                    <materialDesign:ColorZone Mode="Custom"
                                       Margin="0, 0, 10, 0"
                                       Height="{Binding ActualHeight, ElementName=searchContainer}">
 
-                    <materialDesign:ColorZone.Effect>
-                        <DropShadowEffect BlurRadius="10" 
+                        <materialDesign:ColorZone.Effect>
+                            <DropShadowEffect BlurRadius="10" 
                                       ShadowDepth="1" 
                                       Color="LightGray" 
                                       Opacity="0.5" 
                                       RenderingBias="Performance" />
-                    </materialDesign:ColorZone.Effect>
-                    <materialDesign:Card Name="searchBoxContainer"
+                        </materialDesign:ColorZone.Effect>
+                        <materialDesign:Card Name="searchBoxContainer"
                                  Width="380"
                                  Height="45"
                                  UniformCornerRadius="23"
                                  materialDesign:ShadowAssist.ShadowDepth="Depth0"
                                  Grid.Column="0">
-                        <Grid Name="searchContentCard">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="50*"/>
-                                <ColumnDefinition Width="670*"/>
-                            </Grid.ColumnDefinitions>
-                            <Button Name="searchButton"
+                            <Grid Name="searchContentCard">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50*"/>
+                                    <ColumnDefinition Width="670*"/>
+                                </Grid.ColumnDefinitions>
+                                <Button Name="searchButton"
                                 materialDesign:ButtonAssist.CornerRadius="20"
                                 Background="Transparent"
                                 Padding="0"
@@ -95,9 +97,9 @@
                                 materialDesign:RippleAssist.Feedback="{DynamicResource MyPurpleGradient}"
                                 Width="40"
                                 Height="40">
-                                <materialDesign:PackIcon Kind="Search" Width="25" Height="25" Foreground="Black"/>
-                            </Button>
-                            <TextBox Name="searchTextBox"
+                                    <materialDesign:PackIcon Kind="Search" Width="25" Height="25" Foreground="Black"/>
+                                </Button>
+                                <TextBox Name="searchTextBox"
                                  TextChanged="searchTextBox_TextChanged"
                                  Padding="10"
                                  FontSize="15"
@@ -105,118 +107,122 @@
                                  materialDesign:HintAssist.Hint="Search your phone here..."
                                  Grid.Column="1" 
                                  />
-                        </Grid>
-                    </materialDesign:Card>
-                </materialDesign:ColorZone>
+                            </Grid>
+                        </materialDesign:Card>
+                    </materialDesign:ColorZone>
 
-                <!-- Filter combo box-->
-                <materialDesign:ColorZone Mode="Custom"
+                    <!-- Filter combo box-->
+                    <materialDesign:ColorZone Mode="Custom"
                                       Margin="0, 0, 0, 0"
                                       Height="{Binding ActualHeight, ElementName=searchContainer}"
                                       Grid.Column="1">
-                    <materialDesign:ColorZone.Effect>
-                        <DropShadowEffect BlurRadius="10" 
+                        <materialDesign:ColorZone.Effect>
+                            <DropShadowEffect BlurRadius="10" 
                                       ShadowDepth="1" 
                                       Color="LightGray" 
                                       Opacity="0.5" 
                                       RenderingBias="Performance" />
-                    </materialDesign:ColorZone.Effect>
+                        </materialDesign:ColorZone.Effect>
 
 
-                    <materialDesign:Card Name="sortBoxContainer"
+                        <materialDesign:Card Name="sortBoxContainer"
                                  Height="45"
                                  UniformCornerRadius="23"
                                  materialDesign:ShadowAssist.ShadowDepth="Depth0"
                                  Grid.Column="0" Margin="0,0,-110,0">
-                        <StackPanel Orientation="Horizontal" >
-                            <TextBlock Text="From" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFFEA3B6" Margin="10,0"/>
-                            <TextBox Width="45" Name="fromTextbox" Height="30" Padding="0 6 0 0" Text="0" Foreground="Black" HorizontalAlignment="Center"/>
-                            <TextBlock Text="To" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFFEA3B6" Margin="10,0"/>
-                            <TextBox Width="45" Name="toTextbox" Height="30" Padding="0 6 0 0" Text="0" Foreground="Black" HorizontalAlignment="Center"/>
+                            <StackPanel Orientation="Horizontal" >
+                                <TextBlock Text="From" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFFEA3B6" Margin="10,0"/>
+                                <TextBox Width="45" Name="fromTextbox" Height="30" Padding="0 6 0 0" Text="0" Foreground="Black" HorizontalAlignment="Center"/>
+                                <TextBlock Text="To" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFFEA3B6" Margin="10,0"/>
+                                <TextBox Width="45" Name="toTextbox" Height="30" Padding="0 6 0 0" Text="0" Foreground="Black" HorizontalAlignment="Center"/>
 
-                            <Button Name="FilterButton" Click="FilterButton_Click" Margin="5 0 0 0"
+                                <Button Name="FilterButton" Click="FilterButton_Click" Margin="5 0 0 0"
                         Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" BorderBrush="#FFFEA3B6" Background="#FFFEA3B6">
-                                <Button.Content>
-                                    <materialDesign:PackIcon Kind="Filter"/>
-                                </Button.Content>
-                            </Button>
-                        </StackPanel>
-                    </materialDesign:Card>
-                </materialDesign:ColorZone>
-            </Grid>
-            <!--Category list view-->
-                <ListView x:Name="categoriesListView" Margin="0 0 0 10" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="1" SelectionChanged="categoriesListView_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" Style="{DynamicResource MaterialDesignListView}">
-                <ListView.ItemsPanel>
+                                    <Button.Content>
+                                        <materialDesign:PackIcon Kind="Filter"/>
+                                    </Button.Content>
+                                </Button>
+                            </StackPanel>
+                        </materialDesign:Card>
+                    </materialDesign:ColorZone>
+                </Grid>
+                <!--Category list view-->
+                <ListView x:Name="categoriesListView" Margin="149,0,0,10" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="3" SelectionChanged="categoriesListView_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" Style="{DynamicResource MaterialDesignListView}">
+                    <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"/>
                         </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.ItemTemplate>
-                    <DataTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
                             <materialDesign:Card Background="MediumPurple" UniformCornerRadius="10" Width="100" Height="25" materialDesign:ShadowAssist.ShadowEdges="All">
                                 <StackPanel Orientation="Horizontal" Margin="5 0 5 0">
                                     <Image RenderOptions.BitmapScalingMode="HighQuality" Width="20" Height="20" Source="{Binding Avatar}"/>
-                                <TextBlock Text="{Binding CatName}" Foreground="White" Style="{StaticResource MaterialDesignBody2TextBlock}" Margin="5 0 0 0" VerticalAlignment="Center"/>
-                            </StackPanel>
-                        </materialDesign:Card>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                                    <TextBlock Text="{Binding CatName}" Foreground="White" Style="{StaticResource MaterialDesignBody2TextBlock}" Margin="5 0 0 0" VerticalAlignment="Center"/>
+                                </StackPanel>
+                            </materialDesign:Card>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
-            <ListView Name="phonesListView" Grid.Row="2" Grid.Column="1" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                <ListView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel/>
-                    </ItemsPanelTemplate>
-                </ListView.ItemsPanel>
-                <ListView.Resources>
-                    <ContextMenu x:Key="phoneContextMenu" Background="White">
-                        <MenuItem Header="Edit" Click="editMenuItem_Click">
-                            <MenuItem.Icon>
-                                <materialDesign:PackIcon Kind="Pencil"/>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                        <MenuItem Header="Delete" Click="deleteMenuItem_Click">
-                            <MenuItem.Icon>
-                                <materialDesign:PackIcon Kind="TrashCan"/>
-                            </MenuItem.Icon>
-                        </MenuItem>
-                    </ContextMenu>
-                </ListView.Resources>
-                <ListView.ItemContainerStyle>
-                    <Style TargetType="{x:Type ListViewItem}" >
-                        <Setter Property="ContextMenu" Value="{StaticResource phoneContextMenu}" />
-                    </Style>
-                </ListView.ItemContainerStyle>
+                <ListView Name="phonesListView" Grid.Row="1" Grid.Column="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2" Margin="0,59,0,0" Grid.RowSpan="2">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.Resources>
+                        <ContextMenu x:Key="phoneContextMenu" Background="White">
+                            <MenuItem Header="Edit" Click="editMenuItem_Click">
+                                <MenuItem.Icon>
+                                    <materialDesign:PackIcon Kind="Pencil"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem Header="Delete" Click="deleteMenuItem_Click">
+                                <MenuItem.Icon>
+                                    <materialDesign:PackIcon Kind="TrashCan"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </ContextMenu>
+                    </ListView.Resources>
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListViewItem}" >
+                            <Setter Property="ContextMenu" Value="{StaticResource phoneContextMenu}" />
+                            <Setter Property="BorderBrush" Value="#ccc" />
+                            <Setter Property="BorderThickness" Value="1 1 1 1" />
 
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <Grid Width="300">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
-                            <Image RenderOptions.BitmapScalingMode="HighQuality" Grid.RowSpan="2" Width="50" Height="50" Source="{Binding Avatar}"/>
-                            <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ProductName}" Style="{DynamicResource MaterialDesignCaptionTextBlock}"/>
-                            <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SoldPrice, Converter={StaticResource currencyConverter}}" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}"/>
-                            <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="30 10 0 0" Text="{Binding Description}" Style="{DynamicResource MaterialDesignHelperTextBlock}"/>
-                        </Grid>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                        </Style>
+                    </ListView.ItemContainerStyle>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="3" Grid.Column="1">
-                <Button x:Name="previousButton" Width="60" Height="30" Content="&lt;" Click="previousButton_Click" IsEnabled="False" Background="#FFE93C60" BorderBrush="#FF481F72" />
-                <TextBlock Name="currentPagingTextBlock" Width="80" Text="0" TextAlignment="Center" VerticalAlignment="Center"/>
-                <Button x:Name="nextButton" Width="60" Height="30" Content="&gt;" Click="nextButton_Click" Background="#FFFEA3B6" BorderBrush="#FF481F72"/>
-            </StackPanel>
-        </Grid>
-    </DockPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                                <Grid Width="300" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Image RenderOptions.BitmapScalingMode="HighQuality" Grid.RowSpan="2" Width="50" Height="50" Source="{Binding Avatar}"/>
+                                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding ProductName}" Style="{DynamicResource MaterialDesignCaptionTextBlock}"/>
+                                <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SoldPrice, Converter={StaticResource currencyConverter}}" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}"/>
+                                <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="30 10 0 0" Text="{Binding Description}" Style="{DynamicResource MaterialDesignHelperTextBlock}"/>
+                            </Grid>
+              
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3" Margin="66,275,0,0" Grid.RowSpan="2">
+                    <Button x:Name="previousButton" Width="60" Height="30" Content="&lt;" Click="previousButton_Click" IsEnabled="False" Background="#FFE93C60" BorderBrush="#FF481F72" />
+                    <TextBlock Name="currentPagingTextBlock" Width="80" Text="0" TextAlignment="Center" VerticalAlignment="Center"/>
+                    <Button x:Name="nextButton" Width="60" Height="30" Content="&gt;" Click="nextButton_Click" Background="#FFFEA3B6" BorderBrush="#FF481F72"/>
+                </StackPanel>
+            </Grid>
+        </DockPanel>
     </materialDesign:Card>
 
 </Page>

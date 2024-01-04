@@ -27,75 +27,46 @@
                Stretch="UniformToFill"
                Source="{DynamicResource Background}" OpacityMask="#FFD47171"/>-->
         <!--Logo-->
-        <StackPanel
-               VerticalAlignment="Center"
-               Grid.RowSpan="2" Grid.ColumnSpan="2" Height="117" Margin="0,0,65,0">
-            <Label Height="117" FontSize="40" FontWeight="Bold" Background="#FFEBCACA" FontFamily="Arial Black" Foreground="#FFC62F9C" Content="MY SHOP" Width="257" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <StackPanel Orientation="Horizontal"
+               VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Height="70"
+               Grid.RowSpan="2" Grid.ColumnSpan="1" Margin="0,0,0,0">
+            <Label  FontSize="40" FontWeight="Bold" Background="#FFEBCACA" FontFamily="Arial Black" Foreground="#FFC62F9C" Content="MY SHOP" Width="257" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <!--<Image x:Name="logo"
                Source="{DynamicResource Logo}" Height="117" Width="258"/>-->
         </StackPanel>
 
 
         <!--List of button-->
-        <StackPanel Grid.Row="2" Margin="0,10,0,0">
-            <Button x:Name="dashboardButton" Click="dashboardButton_Click"  Background="#FFFEA3B6" materialDesign:ButtonAssist.CornerRadius="5" 
-                    Height="60" BorderBrush="#FF481F72">
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Home" Width="25" Height="25"/>
-                        <TextBlock VerticalAlignment="Center" FontSize="18">Dashboard</TextBlock>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
-            <Button x:Name="categoriesButton" Click="categoriesButton_Click"  Background="#FFFEA3B6" materialDesign:ButtonAssist.CornerRadius="5"
-                    Height="60" BorderBrush="#FF481F72">
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Category" Width="25" Height="25"/>
-                        <TextBlock VerticalAlignment="Center" FontSize="18">Manage categories</TextBlock>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
-            <Button x:Name="productButton" Click="productButton_Click"  Background="#FFFEA3B6" materialDesign:ButtonAssist.CornerRadius="5"
-                    Height="60" BorderBrush="#FF481F72">
-                <Button.Content>
-                    <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="Reproduction" Width="25" Height="25"/>
-                        <TextBlock VerticalAlignment="Center" FontSize="18">Manage products</TextBlock>
-                    </StackPanel>
-                </Button.Content>
-            </Button>
-            <Button x:Name="orderButton" Click="orderButton_Click"  Background="#FFFEA3B6" materialDesign:ButtonAssist.CornerRadius="5"
-                    Height="60" BorderBrush="#FF481F72">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Receipt" Width="25" Height="25" />
-                    <TextBlock VerticalAlignment="Center" FontSize="18">Manage orders</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button x:Name="statButton" Click="statButton_Click"  Background="#FFFEA3B6" materialDesign:ButtonAssist.CornerRadius="5"
-                    Height="60" BorderBrush="#FF481F72">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="BarChart" Width="25" Height="25" />
-                    <TextBlock VerticalAlignment="Center" FontSize="18">Statistic</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button x:Name="configButton" Click="configButton_Click" Background="#FFFEA3B6" materialDesign:ButtonAssist.CornerRadius="5"
-                    Height="60" BorderBrush="#FF481F72">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Kind="Gear" Width="25" Height="25"/>
-                    <TextBlock VerticalAlignment="Center" FontSize="18">Configuration</TextBlock>
-                </StackPanel>
-            </Button>
+        <StackPanel 
+            Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" 
+            Height="70"
+            Grid.Row="0" Grid.Column="1" 
+            Grid.ColumnSpan="2" Grid.RowSpan="2">
+
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="#C62F9C" />
+                    <Setter Property="Foreground" Value="Black" />
+                    <!--<Setter Property="Height" Value="60" />-->
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="BorderBrush" Value="Transparent" />
+                    <Setter Property="Padding" Value="8 4 8 4" />
+                    <Setter Property="FontSize" Value="20" />
+                    
+                </Style>
+                <!--<Style TargetType="TextBlock">
+                </Style>-->
+            </StackPanel.Resources>
+            <Button x:Name="dashboardButton" Click="dashboardButton_Click" >Dashboard</Button>
+            <Button x:Name="categoriesButton" Click="categoriesButton_Click" >Manage categories</Button>
+            <Button x:Name="productButton" Click="productButton_Click">Manage products</Button>
+            <Button x:Name="orderButton" Click="orderButton_Click" >Manage orders</Button>
+            <Button x:Name="statButton" Click="statButton_Click" >Statistic</Button>
+            <Button x:Name="configButton" Click="configButton_Click"   >Configuration</Button>
         </StackPanel>
 
         <!--Content page-->
         <Frame Name="pageNavigation" 
-               NavigationUIVisibility="Hidden"
-       
-               Grid.Column="2"
-               Grid.RowSpan="2"
-               Grid.Row="1" Margin="0,0,10,10">
-
-        </Frame>
+               NavigationUIVisibility="Hidden" Margin="10,10,10,10" Grid.Row="2" Grid.ColumnSpan="3"/>
     </Grid>
 </Window>

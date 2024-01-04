@@ -48,9 +48,12 @@ namespace ProjectMyShop
                 dashboard = new Dashboard();
                 _manageOrderPage = new ManageOrder();
                 _manageCategory = new ManageCategory();
+                statisticsPage = new Statistics();
+                manageProductPage = new ManageProduct();
 
                 Button[] buttons1 = new Button[] { dashboardButton, categoriesButton, productButton, orderButton, statButton, configButton };
                 buttons = buttons1;
+                var a = AppConfig.GetValue(AppConfig.LastWindow);
                 if (AppConfig.GetValue(AppConfig.LastWindow) == "0")
                 {
                     changeButtonColor(dashboardButton);
@@ -58,7 +61,12 @@ namespace ProjectMyShop
                 }
                 else
                 {
-                    if (AppConfig.GetValue(AppConfig.LastWindow) == "ManageCategory")
+                    if (AppConfig.GetValue(AppConfig.LastWindow) == "Dashboard")
+                    {
+                        changeButtonColor(dashboardButton);
+                        pageNavigation.NavigationService.Navigate(dashboard);
+                    }
+                    else if(AppConfig.GetValue(AppConfig.LastWindow) == "ManageCategory")
                     {
                         changeButtonColor(categoriesButton);
                         pageNavigation.NavigationService.Navigate(_manageCategory);
@@ -91,7 +99,7 @@ namespace ProjectMyShop
         {
             foreach (var button in buttons)
             {
-                button.Background = (Brush)Application.Current.Resources["MyPinkGradient"];
+                button.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C62F9C"));
             }
             b.Background = (Brush)Application.Current.Resources["MyRedGradient"];
         }

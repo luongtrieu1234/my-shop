@@ -3,7 +3,7 @@
 	<appSettings>
 		<add key="Server" value="TRITRANMN2PC"/>
 		<add key="Instance" value="MSSQLSERVER01"/>
-		<add key="Database" value="PremiumPhoneShop"/>
+		<add key="Database" value="ShopDB"/>
 		<add key="Username" value="admin"/>
 		<add key="Password" value="admin"/>
 		<add key="Entropy" value="qwe3@1"/>
