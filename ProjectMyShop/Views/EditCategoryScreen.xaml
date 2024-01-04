@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:ProjectMyShop.Views"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="Edit Category" Height="600" Width="800">
+        Title="Edit Category" Height="700" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
@@ -15,21 +15,23 @@
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="20*"/>
             <RowDefinition Height="20*"/>
 
 
         </Grid.RowDefinitions>
 
 
-        <Button x:Name="chooseImageButton" Background="Transparent" Click="ImageButton_Click"  Width="180" Height="180" Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" BorderBrush="#FF481F72">
-            <Image x:Name="avatar" RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding Avatar}" />
-        </Button>
-        <TextBox BorderThickness="1" BorderBrush="#FF481F72" Padding="5" Height="50" Text="{Binding CatName}" x:Name="categoryNameBox" Grid.Row="1" Margin="80,31,80,211" materialDesign:HintAssist.Hint="Category name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" />
+        <StackPanel Orientation="Vertical"  Grid.Row="0" Grid.Column="1" Grid.RowSpan="1">
+            <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0 20" Foreground="#F94F2F">Edit Category</TextBlock>
+            <Button x:Name="chooseImageButton" Background="Transparent" Click="ImageButton_Click"  Width="180" Height="180" Grid.Row="0" Grid.Column="1" Grid.RowSpan="1" BorderBrush="#F94F2F">
+                <Image x:Name="avatar" RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding Avatar}" />
+            </Button>
+        </StackPanel>
+        <TextBox BorderThickness="1" Width="300" BorderBrush="#F94F2F" Padding="5" Height="50" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" materialDesign:HintAssist.Foreground="#F94F2F" Text="{Binding CatName}" x:Name="categoryNameBox" Grid.Row="1" materialDesign:HintAssist.Hint="Category name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Grid.Column="1" Margin="10,28,10,214" />
 
 
-        <StackPanel Height="40" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center"/>
-        <Button x:Name="cancelButton" Click="cancelButton_Click"  Content="Cancel" Grid.Column="1" Margin="80,134,279,126" Grid.Row="1" BorderBrush="#FF481F72" Background="#FFFEA3B6"/>
-        <Button x:Name="addButton" Click="editButton_Click"  Content="Edit category" Margin="268,134,80,126" Grid.Column="1" Grid.Row="1" BorderBrush="#FF481F72" Background="#FFFEA3B6"/>
+        <Button x:Name="cancelButton" Click="cancelButton_Click"  Content="Cancel" Grid.Column="1" Margin="96,118,263,142" Grid.Row="1" BorderBrush="#F94F2F" Background="#FFF" Foreground="#F94F2F"/>
+        <Button x:Name="addButton" Click="editButton_Click"  Content="Edit category" Margin="240,118,108,142" Grid.Column="1" Grid.Row="1" BorderBrush="#F5F5F5" Background="#F94F2F"/>
     </Grid>
 </Window>

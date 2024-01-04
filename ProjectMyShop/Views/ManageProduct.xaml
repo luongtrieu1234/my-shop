@@ -6,24 +6,24 @@
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       xmlns:local="clr-namespace:ProjectMyShop.Views" xmlns:local1="clr-namespace:ProjectMyShop.Converter"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="650"
+      d:DesignHeight="450" d:DesignWidth="700"
       Title="ManageProduct"
       Loaded="Page_Loaded">
     <Page.Resources>
         <local1:CurrencyConverter x:Key="currencyConverter"/>
         <local1:AbsoluteConverter x:Key="absoluteConverter"/>
     </Page.Resources>
-    <materialDesign:Card Background="White" UniformCornerRadius="10" materialDesign:ShadowAssist.ShadowEdges="All" Padding="10 10 0 0">
+    <materialDesign:Card Background="#FFF" Padding="10 10 10 10">
         <DockPanel>
             <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
                 <Button x:Name="ImportButton"
                     Click="ImportButton_Click"
                     Margin="0 0 10 0"
-                    Background="#FFFEA3B6"
-                    materialDesign:ButtonAssist.CornerRadius="5" BorderBrush="#FF481F72">
+                    Background="#F94F2F"
+                    BorderBrush="#FFF">
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="Gear"/>
+                            <materialDesign:PackIcon Kind="Import" Foreground="#FFF"/>
                             <TextBlock Margin="5 0" Text="Import"/>
                         </StackPanel>
                     </Button.Content>
@@ -31,12 +31,12 @@
                 <Button Name="AddButton"
                     Click="AddMenuItem_Click"
                     Margin="0 0 10 0"
-                    Background="#FFFEA3B6"
-                    materialDesign:ButtonAssist.CornerRadius="5" BorderBrush="#FF481F72"
+                    Background="#F94F2F"
+                    BorderBrush="#FFF"
                     >
                     <Button.Content>
                         <StackPanel Orientation="Horizontal">
-                            <materialDesign:PackIcon Kind="AddCircle"/>
+                            <materialDesign:PackIcon Kind="Add" Foreground="#FFF"/>
                             <TextBlock Text="Add" Margin="5 0"/>
                         </StackPanel>
                     </Button.Content>
@@ -48,7 +48,7 @@
                     <ColumnDefinition Width="21*"/>
                     <ColumnDefinition Width="130*"/>
                     <ColumnDefinition Width="460*"/>
-                    <ColumnDefinition Width="25*"/>
+                    <ColumnDefinition Width="25"/>
                 </Grid.ColumnDefinitions>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="90*"/>
@@ -97,15 +97,16 @@
                                 materialDesign:RippleAssist.Feedback="{DynamicResource MyPurpleGradient}"
                                 Width="40"
                                 Height="40">
-                                    <materialDesign:PackIcon Kind="Search" Width="25" Height="25" Foreground="Black"/>
+                                    <materialDesign:PackIcon Kind="Search" Width="25" Height="25" Foreground="#2673DD"/>
                                 </Button>
                                 <TextBox Name="searchTextBox"
                                  TextChanged="searchTextBox_TextChanged"
                                  Padding="10"
                                  FontSize="15"
                                  Foreground="Black"
-                                 materialDesign:HintAssist.Hint="Search your phone here..."
-                                 Grid.Column="1" 
+                                 materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F"
+                                 materialDesign:HintAssist.Foreground="#F94F2F"
+                                 materialDesign:HintAssist.Hint="Search your phone here..." Grid.ColumnSpan="2" Margin="26,0,0,0" 
                                  />
                             </Grid>
                         </materialDesign:Card>
@@ -131,13 +132,13 @@
                                  materialDesign:ShadowAssist.ShadowDepth="Depth0"
                                  Grid.Column="0" Margin="0,0,-110,0">
                             <StackPanel Orientation="Horizontal" >
-                                <TextBlock Text="From" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFFEA3B6" Margin="10,0"/>
-                                <TextBox Width="45" Name="fromTextbox" Height="30" Padding="0 6 0 0" Text="0" Foreground="Black" HorizontalAlignment="Center"/>
-                                <TextBlock Text="To" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFFEA3B6" Margin="10,0"/>
-                                <TextBox Width="45" Name="toTextbox" Height="30" Padding="0 6 0 0" Text="0" Foreground="Black" HorizontalAlignment="Center"/>
+                                <TextBlock Text="From" FontSize="16" VerticalAlignment="Center" Foreground="#F94F2F" Margin="10,0"/>
+                                <TextBox Width="45" Name="fromTextbox" Height="30" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" Padding="0 6 0 0" Text="0" Foreground="Black" HorizontalAlignment="Center"/>
+                                <TextBlock Text="To" FontSize="16" VerticalAlignment="Center" Foreground="#F94F2F" Margin="10,0"/>
+                                <TextBox Width="45" Name="toTextbox" Height="30" Padding="0 6 0 0" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" Text="0" Foreground="Black" HorizontalAlignment="Center"/>
 
                                 <Button Name="FilterButton" Click="FilterButton_Click" Margin="5 0 0 0"
-                        Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" BorderBrush="#FFFEA3B6" Background="#FFFEA3B6">
+                        Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" BorderBrush="#F94F2F" Background="#F94F2F">
                                     <Button.Content>
                                         <materialDesign:PackIcon Kind="Filter"/>
                                     </Button.Content>
@@ -147,7 +148,7 @@
                     </materialDesign:ColorZone>
                 </Grid>
                 <!--Category list view-->
-                <ListView x:Name="categoriesListView" Margin="149,0,0,10" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="3" SelectionChanged="categoriesListView_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" Style="{DynamicResource MaterialDesignListView}">
+                <ListView x:Name="categoriesListView" Margin="0,0,0,10" HorizontalAlignment="Center" Grid.Row="1" Grid.Column="3" SelectionChanged="categoriesListView_SelectionChanged" ScrollViewer.HorizontalScrollBarVisibility="Visible" Style="{DynamicResource MaterialDesignListView}" Width="470">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <StackPanel Orientation="Horizontal"/>
@@ -155,10 +156,10 @@
                     </ListView.ItemsPanel>
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <materialDesign:Card Background="MediumPurple" UniformCornerRadius="10" Width="100" Height="25" materialDesign:ShadowAssist.ShadowEdges="All">
+                            <materialDesign:Card Background="#FFF" Width="100" Height="25" BorderThickness="1" BorderBrush="#2673DD">
                                 <StackPanel Orientation="Horizontal" Margin="5 0 5 0">
                                     <Image RenderOptions.BitmapScalingMode="HighQuality" Width="20" Height="20" Source="{Binding Avatar}"/>
-                                    <TextBlock Text="{Binding CatName}" Foreground="White" Style="{StaticResource MaterialDesignBody2TextBlock}" Margin="5 0 0 0" VerticalAlignment="Center"/>
+                                    <TextBlock Text="{Binding CatName}" Foreground="#2673DD" Margin="5 0 0 0" VerticalAlignment="Center"/>
                                 </StackPanel>
                             </materialDesign:Card>
                         </DataTemplate>
@@ -196,7 +197,7 @@
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                                <Grid Width="300" >
+                            <Grid Width="300" >
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition/>
                                     <ColumnDefinition/>
@@ -211,15 +212,15 @@
                                 <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding SoldPrice, Converter={StaticResource currencyConverter}}" Style="{DynamicResource MaterialDesignSubtitle1TextBlock}"/>
                                 <TextBlock Grid.Row="2" Grid.ColumnSpan="2" Margin="30 10 0 0" Text="{Binding Description}" Style="{DynamicResource MaterialDesignHelperTextBlock}"/>
                             </Grid>
-              
+
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="2" Grid.Column="3" Margin="66,275,0,0" Grid.RowSpan="2">
-                    <Button x:Name="previousButton" Width="60" Height="30" Content="&lt;" Click="previousButton_Click" IsEnabled="False" Background="#FFE93C60" BorderBrush="#FF481F72" />
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Grid.Row="3" Grid.Column="3" Margin="200, 0, 0, 0">
+                    <Button x:Name="previousButton" Width="60" Height="30" Content="&lt;" Click="previousButton_Click" IsEnabled="False" Background="#F94F2F" BorderBrush="#F5F5F5" />
                     <TextBlock Name="currentPagingTextBlock" Width="80" Text="0" TextAlignment="Center" VerticalAlignment="Center"/>
-                    <Button x:Name="nextButton" Width="60" Height="30" Content="&gt;" Click="nextButton_Click" Background="#FFFEA3B6" BorderBrush="#FF481F72"/>
+                    <Button x:Name="nextButton" Width="60" Height="30" Content="&gt;" Click="nextButton_Click" Background="#F94F2F" BorderBrush="#F5F5F5"/>
                 </StackPanel>
             </Grid>
         </DockPanel>

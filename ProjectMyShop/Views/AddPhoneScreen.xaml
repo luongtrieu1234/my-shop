@@ -16,40 +16,44 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="10*"/>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="91*"/>
+            <RowDefinition Height="91*"/>
+            <RowDefinition Height="91*"/>
+            <RowDefinition Height="91*"/>
+            <RowDefinition Height="91*"/>
+            <RowDefinition Height="91*"/>
         </Grid.RowDefinitions>
-        <ComboBox Style="{Binding MaterialDesign}" BorderThickness="1" BorderBrush="MediumPurple" Name="categoryCombobox" Width="100" Height="35" SelectionChanged="categoryCombobox_SelectionChanged" Grid.Column="1" Grid.ColumnSpan="2">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Padding="5" Text="{Binding CatName}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
+        <StackPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0 10" Foreground="#F94F2F">Add Product</TextBlock>
+            <ComboBox Style="{Binding MaterialDesign}" BorderThickness="1" BorderBrush="MediumPurple" x:Name="categoryCombobox" Width="100" Height="31" SelectionChanged="categoryCombobox_SelectionChanged" >
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Padding="5" Text="{Binding CatName}"/>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
 
-        <Button x:Name="chooseImageButton" Background="Transparent" Click="chooseImageButton_Click" Width="300" Height="300" Grid.Row="1" Grid.Column="1" Grid.RowSpan="4" BorderBrush="#FF481F72">
+        <Button x:Name="chooseImageButton" Background="Transparent" Click="chooseImageButton_Click" Height="300" Grid.Row="2" Grid.Column="1" Grid.RowSpan="4" BorderBrush="#F94F2F" Margin="42,13,28,14">
             <Image x:Name="avatar" RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding Avatar}" />
         </Button>
-        <TextBox BorderThickness="1" BorderBrush="#FF481F72" Padding="5" Height="50" Text="{Binding ProductName}" x:Name="phoneNameBox" Grid.Column="2" Grid.Row="1" Margin="10" materialDesign:HintAssist.Hint="Product's name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
-        <TextBox BorderThickness="1" BorderBrush="#FF481F72" Padding="5" Height="50" Text="{Binding Manufacturer}" x:Name="manufacturerBox" Grid.Column="2" Grid.Row="2" Margin="10" materialDesign:HintAssist.Hint="Manufacturer" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-        <TextBox BorderThickness="1" BorderBrush="#FF481F72" Padding="5" Height="150" Text="{Binding Description}" x:Name="descriptionBox" Grid.Column="2" Grid.Row="3" Grid.RowSpan="2" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10"/>
-        <Grid Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2">
+        <TextBox BorderThickness="1" BorderBrush="#F94F2F" Padding="5" materialDesign:HintAssist.Foreground="#F94F2F" Height="50" Text="{Binding ProductName}" x:Name="phoneNameBox" Grid.Column="2" Grid.Row="2" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" materialDesign:HintAssist.Hint="Product's name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox BorderThickness="1" BorderBrush="#F94F2F" Padding="5" materialDesign:HintAssist.Foreground="#F94F2F" Height="50" Text="{Binding Manufacturer}" x:Name="manufacturerBox" Grid.Column="2" Grid.Row="3" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" materialDesign:HintAssist.Hint="Manufacturer" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+        <TextBox BorderThickness="1" BorderBrush="#F94F2F" Padding="5" Margin="0 20" materialDesign:HintAssist.Foreground="#F94F2F" Text="{Binding Description}" x:Name="descriptionBox" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <Grid Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <TextBox BorderThickness="1" BorderBrush="#FF481F72" Padding="5" Height="50" Text="{Binding Stock}" x:Name="stockBox"  Margin="10" materialDesign:HintAssist.Hint="Stock" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-            <TextBox BorderThickness="1" Grid.Column="1" BorderBrush="#FF481F72" Padding="5" Height="50" Text="{Binding BoughtPrice}" x:Name="boughtpriceBox"  Margin="10" materialDesign:HintAssist.Hint="Bought price" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-            <TextBox BorderThickness="1" Grid.Column="2" BorderBrush="#FF481F72" Padding="5" Height="50" Text="{Binding SoldPrice}" x:Name="soldpriceBox" Margin="10" materialDesign:HintAssist.Hint="Sold price" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <TextBox BorderThickness="1" BorderBrush="#F94F2F" materialDesign:HintAssist.Foreground="#F94F2F" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" Margin="10" Padding="5" Height="50" Text="{Binding Stock}" x:Name="stockBox" materialDesign:HintAssist.Hint="Stock" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <TextBox BorderThickness="1" Grid.Column="1" BorderBrush="#F94F2F" materialDesign:HintAssist.Foreground="#F94F2F" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" Margin="10" Padding="5" Height="50" Text="{Binding BoughtPrice}" x:Name="boughtpriceBox" materialDesign:HintAssist.Hint="Bought price" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+            <TextBox BorderThickness="1" Grid.Column="2" BorderBrush="#F94F2F" materialDesign:HintAssist.Foreground="#F94F2F" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" Margin="10" Padding="5" Height="50" Text="{Binding SoldPrice}" x:Name="soldpriceBox" materialDesign:HintAssist.Hint="Sold price" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
         </Grid>
-        <StackPanel Height="40" Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="cancelButton" Click="cancelButton_Click" Content="Cancel" Width="120" Margin="0 0 20 0" BorderBrush="#FF481F72" Background="#FFFEA3B6"/>
-            <Button x:Name="addButton" Click="addButton_Click" Content="Add phone" Width="120" Margin="20 0 0 0" BorderBrush="#FF481F72" Background="#FFFEA3B6"/>
+        <StackPanel Height="40" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,26,0,25">
+            <Button x:Name="cancelButton" Click="cancelButton_Click" Content="Cancel" Width="120" Margin="0 0 20 0" BorderBrush="#FFF" Background="#F94F2F"/>
+            <Button x:Name="addButton" Click="addButton_Click" Content="Add phone" Width="120" BorderBrush="#FFF" Background="#F94F2F"/>
         </StackPanel>
     </Grid>
 </Window>

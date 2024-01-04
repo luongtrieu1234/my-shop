@@ -3,13 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:ProjectMyShop"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
         Title="MainWindow" Height="650" Width="1100"
         Loaded="Window_Loaded">
-    <Grid x:Name="layoutContainer" Background="#FFD6E4F3">
+    <Grid x:Name="layoutContainer" Background="#F5F5F5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="4*"/>
             <ColumnDefinition Width="1*"/>
@@ -30,7 +28,7 @@
         <StackPanel Orientation="Horizontal"
                VerticalAlignment="Center" Grid.Row="0" Grid.Column="0" Height="70"
                Grid.RowSpan="2" Grid.ColumnSpan="1" Margin="0,0,0,0">
-            <Label  FontSize="40" FontWeight="Bold" Background="#FFEBCACA" FontFamily="Arial Black" Foreground="#FFC62F9C" Content="MY SHOP" Width="257" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label  FontSize="40" FontWeight="Bold" Background="#FFF" FontFamily="Arial Black" Foreground="#F94F2F" Content="MY SHOP" Width="257" HorizontalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
             <!--<Image x:Name="logo"
                Source="{DynamicResource Logo}" Height="117" Width="258"/>-->
         </StackPanel>
@@ -45,14 +43,19 @@
 
             <StackPanel.Resources>
                 <Style TargetType="Button">
-                    <Setter Property="Background" Value="#C62F9C" />
-                    <Setter Property="Foreground" Value="Black" />
+                    <Setter Property="Background" Value="#F94F2F" />
+                    <Setter Property="Foreground" Value="#FFF" />
                     <!--<Setter Property="Height" Value="60" />-->
                     <Setter Property="BorderThickness" Value="0" />
                     <Setter Property="BorderBrush" Value="Transparent" />
                     <Setter Property="Padding" Value="8 4 8 4" />
                     <Setter Property="FontSize" Value="20" />
-                    
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#F05D40" />
+                            <Setter Property="Foreground" Value="#F05D40" />
+                        </Trigger>
+                    </Style.Triggers>
                 </Style>
                 <!--<Style TargetType="TextBlock">
                 </Style>-->
@@ -62,7 +65,7 @@
             <Button x:Name="productButton" Click="productButton_Click">Manage products</Button>
             <Button x:Name="orderButton" Click="orderButton_Click" >Manage orders</Button>
             <Button x:Name="statButton" Click="statButton_Click" >Statistic</Button>
-            <Button x:Name="configButton" Click="configButton_Click"   >Configuration</Button>
+            <Button x:Name="configButton" Click="configButton_Click">Configuration</Button>
         </StackPanel>
 
         <!--Content page-->

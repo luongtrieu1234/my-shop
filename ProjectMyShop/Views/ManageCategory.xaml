@@ -11,7 +11,7 @@
       Loaded="Page_Loaded">
 
   
-    <materialDesign:Card Background="White" UniformCornerRadius="10" materialDesign:ShadowAssist.ShadowEdges="All" Padding="10 10 0 0">
+    <materialDesign:Card Background="White" materialDesign:ShadowAssist.ShadowEdges="All" Padding="10 10 10 10">
     <DockPanel>
         <!--  List Button -->
         
@@ -19,11 +19,12 @@
             <Button x:Name="AddButton"
                     Click="AddButton_Click"                    
                     Margin="0 0 10 0"
-                    Background="#FFFEA3B6"
-                    materialDesign:ButtonAssist.CornerRadius="5">
+                    Background="#F94F2F"
+                    BorderBrush="#F5F5F5"
+                   >
                 <Button.Content>
                     <StackPanel Orientation="Horizontal">
-                        <materialDesign:PackIcon Kind="AddCircle"/>
+                        <materialDesign:PackIcon Kind="Add" Foreground="#FFF"/>
                         <TextBlock Margin="5 0" Text="Add"/>
                     </StackPanel>
                 </Button.Content>
@@ -77,8 +78,6 @@
                         <StackPanel Width="90" Orientation="Vertical">
                             <Image RenderOptions.BitmapScalingMode="HighQuality" Margin="0 10 0 10"  Width="50" Height="50" Source="{Binding Avatar}"/>
                             <TextBlock Text="{Binding CatName}" HorizontalAlignment="Center"/>
-                           
-
                         </StackPanel>
                     </DataTemplate>
                 </ListView.ItemTemplate>

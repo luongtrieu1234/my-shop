@@ -99,7 +99,7 @@ namespace ProjectMyShop
         {
             foreach (var button in buttons)
             {
-                button.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#C62F9C"));
+                button.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#F94F2F"));
             }
             b.Background = (Brush)Application.Current.Resources["MyRedGradient"];
         }

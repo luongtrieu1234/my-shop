@@ -102,26 +102,24 @@
                 Grid.Row="1"
                 Width="200"
                 Height="100"
-                Background="#FFEA78EB"
+                Background="#FFF"
                 VerticalAlignment="Top"
-                UniformCornerRadius="10"
-                materialDesign:ShadowAssist.ShadowDepth="Depth1"
                 HorizontalAlignment="Center">
 
             <Grid Margin="10">
                 <StackPanel>
                     <TextBlock Text="Revenue"
-                                   Foreground="White"
+                                   Foreground="#F94F2F"
                                    Style="{StaticResource MaterialDesignSubtitle2TextBlock}"/>
 
                     <TextBlock x:Name="TotalRevenueTextBlock" 
                                 Text="{Binding}"
-                                   Foreground="White"
+                                   Foreground="#2673DD"
                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
 
                 </StackPanel>
                 <materialDesign:PackIcon Kind="Store" Width="50" Margin="0, 0, 10, 10" VerticalAlignment="Bottom"
-                        HorizontalAlignment="Right" Foreground="Azure"
+                        HorizontalAlignment="Right" Foreground="#F94F2F"
                         Height="50"/>
 
             </Grid>
@@ -132,28 +130,26 @@
                 Grid.Column="1"
                 Width="200"
                 Height="100"
-                Background="#FF69D7E9"
+                Background="#FFF"
                 VerticalAlignment="Top"
-                UniformCornerRadius="10"
-                materialDesign:ShadowAssist.ShadowDepth="Depth1"
                 HorizontalAlignment="Center">
 
             <Grid Margin="10">
                 <StackPanel>
                     <TextBlock Text="Profit"
-                                   Foreground="White"
+                                   Foreground="#F94F2F"
                                    Style="{StaticResource MaterialDesignSubtitle2TextBlock}"/>
 
                     <TextBlock x:Name="TotalProfitTextBlock" 
                                 Text="{Binding}"
-                                   Foreground="White"
+                                   Foreground="#2673DD"
                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
 
 
                 </StackPanel>
 
                 <materialDesign:PackIcon Kind="Dollar" Width="50" Height="50" Margin="0, 0, 10, 10" VerticalAlignment="Bottom"
-                        HorizontalAlignment="Right" Foreground="Azure"/>
+                        HorizontalAlignment="Right" Foreground="#F94F2F"/>
 
             </Grid>
 
@@ -164,26 +160,24 @@
                 Grid.Column="2"
                 Width="200"
                 Height="100"
-                Background="#FFF0E287"
+                Background="#FFF"
                 VerticalAlignment="Top"
-                UniformCornerRadius="10"
-                materialDesign:ShadowAssist.ShadowDepth="Depth1"
                 HorizontalAlignment="Center">
 
             <Grid Margin="10">
                 <StackPanel>
                     <TextBlock Text="Orders"
-                                   Foreground="White"
+                                   Foreground="#F94F2F"
                                    Style="{StaticResource MaterialDesignSubtitle2TextBlock}"/>
 
                     <TextBlock x:Name="TotalOrdersTextBlock" 
                                 Text="{Binding Count}"
-                                   Foreground="White"
+                                   Foreground="#2673DD"
                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
                 </StackPanel>
 
                 <materialDesign:PackIcon Kind="Receipt" Width="50" Height="50" Margin="0, 0, 10, 10" VerticalAlignment="Bottom"
-                        HorizontalAlignment="Right" Foreground="Azure"/>
+                        HorizontalAlignment="Right" Foreground="#F94F2F"/>
             </Grid>
         </materialDesign:Card>
 

@@ -13,33 +13,29 @@
         <local1:StatusConverter x:Key="statusConverter"/>
     </Page.Resources>
 
-    <materialDesign:Card Background="White" UniformCornerRadius="10" materialDesign:ShadowAssist.ShadowEdges="All" Padding="20,20,20,30">
+    <materialDesign:Card Background="White" Padding="20,20,20,30">
         <DockPanel LastChildFill="True">
             <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
-                <TextBlock Text="Order status" FontWeight="Normal" FontSize="16"/>
+                <TextBlock Text="Order status" Foreground="#F94F2F" FontWeight="Bold" FontSize="16"/>
                 <TextBlock Text="Overview of Lastest Orders" FontWeight="DemiBold" Foreground="Gray" FontSize="12"/>
                 <DockPanel LastChildFill="True">
                     <StackPanel Orientation="Horizontal" Margin="0,20">
                         <Button Name="AddButton" Click="AddButton_Click" 
-                            materialDesign:ButtonAssist.CornerRadius="5"
-                            Background="#FFFEA3B6"
-                            materialDesign:ShadowAssist.ShadowEdges="All"
-                            BorderBrush="DeepPink"
+                            Background="#F94F2F"
+                            BorderBrush="#F5F5F5"
                             Margin="5">
                             <Button.Content>
                                 <StackPanel Orientation="Horizontal">
-                                    <materialDesign:PackIcon Kind="AddCircle"/>
+                                    <materialDesign:PackIcon Kind="Add"/>
                                     <TextBlock Margin="10,0" Text="Add"></TextBlock>
                                 </StackPanel>
                             </Button.Content>
                         </Button>
 
                         <Button Name="UpdateButton" Click="UpdateButton_Click"
-                            materialDesign:ButtonAssist.CornerRadius="5"
-                            Background="LightGray"
-                            BorderBrush="LightGray"
-                            materialDesign:ShadowAssist.ShadowEdges="All"
-                            Foreground="Gray"
+                            Background="#FFF"
+                            BorderBrush="#2673DD"
+                            Foreground="#2673DD"
                             Margin="5">
                             <Button.Content>
                                 <materialDesign:PackIcon Kind="Update"/>
@@ -47,11 +43,9 @@
                         </Button>
 
                         <Button Name="DeleteButton" Click="DeleteButton_Click"
-                            materialDesign:ButtonAssist.CornerRadius="5"
-                            Background="LightGray"
-                            BorderBrush="LightGray"
-                            materialDesign:ShadowAssist.ShadowEdges="All"
-                            Foreground="Gray"
+                            Background="#FFF"
+                            BorderBrush="#2673DD"
+                            Foreground="#2673DD"
                             Margin="5">
                             <Button.Content>
                                 <materialDesign:PackIcon Kind="Delete"/>
@@ -61,13 +55,13 @@
                     </StackPanel>
 
                     <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
-                        <TextBlock Text="From" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFFEA3B6" Margin="10,0"/>
+                        <TextBlock Text="From" VerticalAlignment="Center" Foreground="#F94F2F" Margin="10,0"/>
                         <DatePicker Name="FromDatePicker"  IsTodayHighlighted="True" AutomationProperties.IsOffscreenBehavior="Onscreen">
                             <DatePicker.CalendarStyle>
                                 <Style TargetType="Calendar" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
                                     <Style.Resources>
-                                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="DeepPink" />
-                                        <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="Green" />
+                                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#F94F2F" />
+                                        <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#2673DD" />
                                     </Style.Resources>
                                     <Style.Setters>
                                         <Setter Property="Background" Value="White"/>
@@ -75,13 +69,13 @@
                                 </Style>
                             </DatePicker.CalendarStyle>
                         </DatePicker>
-                        <TextBlock Text="To" VerticalAlignment="Center" FontWeight="Bold" Foreground="#FFFEA3B6" Margin="10,0"/>
+                        <TextBlock Text="To" VerticalAlignment="Center"  Foreground="#F94F2F" Margin="10,0"/>
                         <DatePicker Name="ToDatePicker" IsTodayHighlighted="True">
                             <DatePicker.CalendarStyle>
                                 <Style TargetType="Calendar" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
                                     <Style.Resources>
-                                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="DeepPink" />
-                                        <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="Green" />
+                                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#F94F2F" />
+                                        <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#2673DD" />
                                     </Style.Resources>
                                     <Style.Setters>
                                         <Setter Property="Background" Value="White"/>
@@ -91,7 +85,7 @@
                         </DatePicker>
 
                         <Button Name="FilterButton" Click="FilterButton_Click" Margin="10,0"
-                            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" BorderBrush="#FFFEA3B6" Background="#FFFEA3B6">
+                            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}" BorderBrush="#F94F2F" Background="#F94F2F">
                             <Button.Content>
                                 <materialDesign:PackIcon Kind="Filter"/>
                             </Button.Content>
@@ -108,8 +102,7 @@
                     AutoGenerateColumns="False" ColumnHeaderHeight="30" HeadersVisibility="Column" 
                     RowHeaderWidth="100" SelectionChanged="OrderDataGrid_SelectionChanged" 
                     CanUserResizeColumns="False" 
-                    materialDesign:DataGridAssist.CornerRadius="20"
-                    BorderBrush="Gray"
+                    BorderBrush="#F5F5F5"
                     BorderThickness="1"
                     VerticalScrollBarVisibility="Hidden" 
                     HorizontalScrollBarVisibility="Hidden" 
@@ -124,15 +117,12 @@
                         <Style TargetType="{x:Type DataGridRow}">
                             <Style.Triggers>
                                 <Trigger Property="IsSelected" Value="True">
-                                    <Setter Property="Background" Value="DeepPink"/>
-                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="Background" Value="#F6F6F6"/>
+                                    <Setter Property="Foreground" Value="Black"/>
                                 </Trigger>
                             </Style.Triggers>
                         </Style>
                     </DataGrid.RowStyle>
-                    <DataGrid.Effect>
-                        <DropShadowEffect/>
-                    </DataGrid.Effect>
 
 
                     <DataGrid.HorizontalGridLinesBrush>
@@ -184,10 +174,8 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <Button
-                                materialDesign:ButtonAssist.CornerRadius="5"
-                                Background="Pink"
-                                materialDesign:ShadowAssist.ShadowEdges="All"
-                                BorderBrush="Pink"
+                                Background="#F94F2F"
+                                BorderBrush="#FFF"
                                 Margin="5">
                                         <Button.Content>
                                             <StackPanel Orientation="Horizontal">
@@ -203,14 +191,11 @@
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel>
-                                        <materialDesign:Badged>
-                                            <Button x:Name="DetailButton" Click="DetailButton_Click" 
-                                             Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryButton}">
-                                                <Button.Content>
-                                                    <materialDesign:PackIcon Kind="EyeSettings"/>
-                                                </Button.Content>
-                                            </Button>
-                                        </materialDesign:Badged>
+                                        <Button x:Name="DetailButton" Click="DetailButton_Click" Background="#FFF" BorderBrush="#2673DD">
+                                            <Button.Content>
+                                                <materialDesign:PackIcon Kind="Details" Foreground="#2673DD"/>
+                                            </Button.Content>
+                                        </Button>
                                     </StackPanel>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
@@ -220,8 +205,8 @@
                     <DataGrid.ColumnHeaderStyle>
                         <Style>
                             <Style.Setters>
-                                <Setter Property="Panel.Background" Value="Black"/>
-                                <Setter Property="TextBlock.Foreground" Value="White"/>
+                                <Setter Property="Panel.Background" Value="#F5f5f5"/>
+                                <Setter Property="TextBlock.Foreground" Value="#2673DD"/>
                                 <Setter Property="TextBlock.Height" Value="30"/>
                                 <Setter Property="TextBlock.FontWeight" Value="Bold"/>
                             </Style.Setters>
@@ -234,12 +219,12 @@
 
                         <Button x:Name="FirstButton" Content="&lt;&lt;" Margin="0,0,10,0"
                                 Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
-                                Click="FirstButton_Click" Background="#FFFEA3B6"/>
+                                Click="FirstButton_Click" Background="#F94F2F"/>
 
                         <Button x:Name="PreviousButton" 
                                 Content="&lt;"
                                 Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
-                                Click="PreviousButton_Click" Background="#FFFEA3B6"
+                                Click="PreviousButton_Click" Background="#F94F2F"
                     />
 
                         <TextBlock x:Name="CurrentPageText" Text="1" VerticalAlignment="Center" FontWeight="Bold" Foreground="Gray" Padding="10,0,0,0"></TextBlock>
@@ -248,11 +233,11 @@
 
                         <Button x:Name="NextButton" Content="&gt;"
                                 Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}"
-                                Click="NextButton_Click" Background="#FFFEA3B6"/>
+                                Click="NextButton_Click" Background="#F94F2F"/>
 
                         <Button x:Name="LastButton" Content="&gt;&gt;" Margin="10,0,0,0"
                                 Click="LastButton_Click"
-                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}" Background="#FFFEA3B6"
+                                Style="{StaticResource MaterialDesignRaisedSecondaryDarkButton}" Background="#F94F2F"
                                 />
 
                     </StackPanel>

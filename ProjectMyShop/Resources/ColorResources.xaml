@@ -11,12 +11,12 @@
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="MyBlueGradient">
-        <GradientStop Color="#29abe2" Offset="0"/>
-        <GradientStop Color="#95f4e2" Offset="1.0"/>
+        <GradientStop Color="#ff9357" Offset="0"/>
+        <GradientStop Color="#ff9357" Offset="1.0"/>
     </LinearGradientBrush>
 
     <LinearGradientBrush x:Key="MyRedGradient">
-        <GradientStop Color="#ff1d25" Offset="0"/>
+        <GradientStop Color="#ff9357" Offset="0"/>
         <GradientStop Color="#ff9357" Offset="1.0"/>
     </LinearGradientBrush>
 

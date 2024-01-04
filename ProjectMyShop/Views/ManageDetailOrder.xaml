@@ -20,7 +20,7 @@
         <DockPanel LastChildFill="True">
             
             <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
-                <TextBlock Text="Detail Order" FontWeight="Normal" FontSize="16"/>
+                <TextBlock Text="Detail Order" FontSize="16" FontWeight="Bold" Foreground="#F94F2F"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Order #" FontWeight="DemiBold" Foreground="Gray" FontSize="12"/>
                     <TextBlock x:Name="OrderIDText" Text="{Binding ID}" FontWeight="DemiBold" Foreground="Gray" FontSize="12"/>
@@ -36,12 +36,12 @@
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <materialDesign:Card Background="White" UniformCornerRadius="10" materialDesign:ShadowAssist.ShadowEdges="All" Grid.Row="0"
-                                     Padding="10" BorderBrush="Gray" Margin="5">
+                <materialDesign:Card Background="White" Grid.Row="0"
+                                     Padding="10" BorderBrush="#F5F5F5" Margin="5">
                     <DockPanel LastChildFill="True">
 
                         <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
-                            <TextBlock Text="Order Overview" FontWeight="DemiBold" Foreground="Gray" FontSize="14" Margin="5,0,0,5"/>
+                            <TextBlock Text="Order Overview" FontWeight="Bold" Foreground="#F94F2F" FontSize="14" Margin="5,0,0,5"/>
                             <DockPanel LastChildFill="True">
                                 <StackPanel Orientation="Vertical" DockPanel.Dock="Left" Width="250">
                                     <StackPanel Width="Auto" Orientation="Horizontal"  HorizontalAlignment="Left">
@@ -65,8 +65,8 @@
                                             <DatePicker.CalendarStyle>
                                                 <Style TargetType="Calendar" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
                                                     <Style.Resources>
-                                                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="DeepPink" />
-                                                        <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="Green" />
+                                                        <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#F94F2F" />
+                                                        <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#2673DD" />
                                                     </Style.Resources>
                                                     <Style.Setters>
                                                         <Setter Property="Background" Value="White"/>
@@ -86,35 +86,31 @@
                         </StackPanel>
                     </DockPanel>
                 </materialDesign:Card>
-                <materialDesign:Card Background="White" UniformCornerRadius="10" materialDesign:ShadowAssist.ShadowEdges="All" Grid.Row="1"
-                                     Padding="10" BorderBrush="Gray" Margin="5">
+                <materialDesign:Card Background="White" Grid.Row="1"
+                                     Padding="10" BorderBrush="#F5F5F5" Margin="5">
                     <DockPanel LastChildFill="True">
 
                         <StackPanel Orientation="Vertical" DockPanel.Dock="Top">
-                            <TextBlock Text="Product List" FontWeight="DemiBold" Foreground="Gray" FontSize="14" Margin="5,0,0,5"/>
+                            <TextBlock Text="Product List" FontWeight="DemiBold" Foreground="#F94F2F" FontSize="14" Margin="5,0,0,5"/>
                             <StackPanel Orientation="Horizontal" Margin="0,10" HorizontalAlignment="Left">
                            
 
                                 <Button Name="ChoosePhoneButton" Click="ChooseProductButton_Click" 
-                            materialDesign:ButtonAssist.CornerRadius="5"
-                            Background="#FFFEA3B6"
-                            materialDesign:ShadowAssist.ShadowEdges="All"
-                            BorderBrush="DeepPink"
+                            Background="#F94F2F"
+                            BorderBrush="#F5F5F5"
                             Margin="5">
                                     <Button.Content>
                                         <StackPanel Orientation="Horizontal">
-                                            <materialDesign:PackIcon Kind="AddCircle"/>
+                                            <materialDesign:PackIcon Kind="Add"/>
                                             <TextBlock Margin="10,0" Text="Add"></TextBlock>
                                         </StackPanel>
                                     </Button.Content>
                                 </Button>
 
                                 <Button Name="UpdateButton" Click="UpdateButton_Click"
-                            materialDesign:ButtonAssist.CornerRadius="5"
-                            Background="LightGray"
-                            BorderBrush="LightGray"
-                            materialDesign:ShadowAssist.ShadowEdges="All"
-                            Foreground="Gray"
+                            Background="#FFF"
+                            BorderBrush="#2673DD"
+                            Foreground="#2673DD"
                             Margin="5">
                                     <Button.Content>
                                         <materialDesign:PackIcon Kind="Update"/>
@@ -122,12 +118,10 @@
                                 </Button>
 
                                 <Button Name="DeleteButton" Click="DeleteButton_Click"
-                            materialDesign:ButtonAssist.CornerRadius="5"
-                            Background="LightGray"
-                            BorderBrush="LightGray"
-                            materialDesign:ShadowAssist.ShadowEdges="All"
-                            Foreground="Gray"
-                            Margin="5">
+                                    Background="#FFF"
+                                    BorderBrush="#2673DD"
+                                    Foreground="#2673DD"
+                                    Margin="5">
                                     <Button.Content>
                                         <materialDesign:PackIcon Kind="Delete"/>
                                     </Button.Content>
@@ -156,8 +150,8 @@
                                     <Style TargetType="{x:Type DataGridRow}">
                                         <Style.Triggers>
                                             <Trigger Property="IsSelected" Value="True">
-                                                <Setter Property="Background" Value="DeepPink"/>
-                                                <Setter Property="Foreground" Value="White"/>
+                                                <Setter Property="Background" Value="#F6F6F6"/>
+                                                <Setter Property="Foreground" Value="Black"/>
                                             </Trigger>
                                         </Style.Triggers>
                                     </Style>
@@ -195,9 +189,9 @@
                                         <DataGridTemplateColumn.CellTemplate>
                                             <DataTemplate>
                                                 <StackPanel Orientation="Horizontal">
-                                                    <Button x:Name="DeleteButton" Click="DeleteButton_Click" >
+                                                    <Button x:Name="DeleteButton" Click="DeleteButton_Click" Background="#FFF" BorderBrush="#2673DD">
                                                         <Button.Content>
-                                                            <materialDesign:PackIcon Kind="Trash"/>
+                                                            <materialDesign:PackIcon Kind="Trash" Foreground="#2673DD"/>
                                                         </Button.Content>
                                                     </Button>
                                                 </StackPanel>
@@ -213,10 +207,8 @@
                 </materialDesign:Card>
                 <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Right"  Margin="0,5,0,0">
                     <Button Name="SaveButton" Click="SaveButton_Click" 
-                            materialDesign:ButtonAssist.CornerRadius="5"
-                            Background="#FFFEA3B6"
-                            materialDesign:ShadowAssist.ShadowEdges="All"
-                            BorderBrush="DeepPink"
+                            Background="#F94F2F"
+                            BorderBrush="#F5F5F5"
                             >
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
@@ -227,16 +219,14 @@
                     </Button>
 
                     <Button Name="ReturnButton" Click="ReturnButton_Click"
-                            materialDesign:ButtonAssist.CornerRadius="5"
-                            Background="LightGray"
-                            BorderBrush="LightGray"
-                            materialDesign:ShadowAssist.ShadowEdges="All"
-                            Foreground="Gray"
+                            Background="#FFF"
+                            BorderBrush="#F94F2F"
+                            Foreground="#F94F2F"
                             Margin="5,0">
                         <Button.Content>
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="KeyboardReturn"/>
-                                <TextBlock Margin="5,-2" Text="Return"></TextBlock>
+                                <materialDesign:PackIcon Kind="KeyboardReturn" Foreground="#F94F2F"/>
+                                <TextBlock Margin="5,-2" Text="Back" Foreground="#F94F2F"></TextBlock>
                             </StackPanel>
                         </Button.Content>
                     </Button>

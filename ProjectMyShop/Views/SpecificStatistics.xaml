@@ -82,7 +82,7 @@
                     <DatePicker.CalendarStyle>
                         <Style TargetType="Calendar" BasedOn="{StaticResource MaterialDesignCalendarPortrait}">
                             <Style.Resources>
-                                <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="DeepPink" />
+                                <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#F94F2F" />
                                 <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="Green" />
                             </Style.Resources>
                             <Style.Setters>
@@ -176,7 +176,6 @@
 
                         <DockPanel>
                             <ComboBox Name="bargraphCombobox" 
-                                Style="{Binding MaterialDesign}"
                                 HorizontalAlignment="Right"
                                 Height="30"
                                 VerticalContentAlignment="Center"

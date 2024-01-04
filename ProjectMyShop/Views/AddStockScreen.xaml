@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ProjectMyShop.Views"
         mc:Ignorable="d"
-        Title="AddStockScreen" Height="100" Width="400">
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-        <TextBlock Text="Stock" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center" Margin="20 0 20 0"/>
-        <TextBox Width="150" Height="30" FontSize="15" Name="stockBox" Text="{Binding Stock}"/>
-        <Button Width="100" Height="30" Name="addButton" Content="Add Stock" Click="addButton_Click" Margin="20 0 0 0" BorderBrush="#FF481F72" Background="#FFFEA3B6"/>
+        Title="AddStockScreen" Height="200" Width="230">
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+        <TextBlock Text="Stock" FontSize="15" FontWeight="DemiBold" VerticalAlignment="Center" Margin="20 20 20 20"/>
+        <TextBox Width="150" Height="30" FontSize="15" Name="stockBox" Margin="20 0 20 20" CaretBrush="#F94F2F" BorderBrush="#F94F2F" Text="{Binding Stock}"/>
+        <Button Width="100" Height="30" x:Name="addButton" Content="Add Stock" Click="addButton_Click" BorderBrush="#F5F5F5" Background="#F94F2F"/>
     </StackPanel>
 </Window>

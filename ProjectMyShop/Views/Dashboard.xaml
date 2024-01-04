@@ -27,28 +27,27 @@
                 Grid.Row="1"
                 Width="200"
                 Height="100"
-                Background="#FFFEA3B6"
+                Background="#FFF"
                 VerticalAlignment="Top"
-                UniformCornerRadius="10"
                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
                 HorizontalAlignment="Center">
 
             <Grid Margin="10">
                 <StackPanel>
                     <TextBlock Text="Total products"
-                                   Foreground="White"
+                                   Foreground="#F94F2F"
                                    Style="{StaticResource MaterialDesignSubtitle2TextBlock}"/>
 
                     <!-- binding -->
 
                     <TextBlock x:Name="SumPhones" 
                                 Text="{Binding totalPhone}"
-                                   Foreground="White"
+                                   Foreground="#2673DD"
                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
 
                 </StackPanel>
-                <materialDesign:PackIcon Kind="Cellphone" Width="50" Margin="0, 0, 10, 10" VerticalAlignment="Bottom"
-                        HorizontalAlignment="Right" Foreground="Azure"
+                <materialDesign:PackIcon Kind="Store" Width="50" VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right" Foreground="#F94F2F"
                         Height="50"/>
 
             </Grid>
@@ -59,83 +58,81 @@
                 Grid.Column="1"
                 Width="200"
                 Height="100"
-                Background="#FF7FC3DF"
+                Background="#FFF"
                 VerticalAlignment="Top"
-                UniformCornerRadius="10"
                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
                 HorizontalAlignment="Center">
 
             <Grid Margin="10">
                 <StackPanel>
                     <TextBlock Text="Week Orders"
-                                   Foreground="White"
+                                   Foreground="#F94F2F"
                                    Style="{StaticResource MaterialDesignSubtitle2TextBlock}"/>
 
                     <!-- binding -->
 
                     <TextBlock x:Name="SumWeekOrders" 
                                 Text="{Binding weekOrder}"
-                                   Foreground="White"
+                                   Foreground="#2673DD"
                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
 
 
                 </StackPanel>
 
-                <materialDesign:PackIcon Kind="Receipt" Width="50" Height="50" Margin="0, 0, 10, 10" VerticalAlignment="Bottom"
-                        HorizontalAlignment="Right" Foreground="Azure"/>
+                <materialDesign:PackIcon Kind="ViewWeek" Width="50" Height="50" VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right" Foreground="#F94F2F"/>
 
             </Grid>
 
         </materialDesign:Card>
-        
+
         <materialDesign:Card
                 Grid.Row="1"
                 Grid.Column="2"
                 Width="200"
                 Height="100"
-                Background="#FFDFE38D"
+                Background="#FFF"
                 VerticalAlignment="Top"
-                UniformCornerRadius="10"
                 materialDesign:ShadowAssist.ShadowDepth="Depth1"
                 HorizontalAlignment="Center">
 
-            <Grid Margin="20">
+            <Grid Margin="10">
                 <StackPanel>
                     <TextBlock Text="Month Orders"
-                                   Foreground="White"
+                                   Foreground="#F94F2F"
                                    Style="{StaticResource MaterialDesignSubtitle2TextBlock}"/>
 
                     <!-- binding -->
 
                     <TextBlock x:Name="SumMonthOrders" 
                                 Text="{Binding monthOrder}"
-                                   Foreground="White"
+                                   Foreground="#2673DD"
                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
 
 
                 </StackPanel>
 
-                <materialDesign:PackIcon Kind="Receipt" Width="50" Height="50" Margin="0, 0, 10, 10" VerticalAlignment="Bottom"
-                        HorizontalAlignment="Right" Foreground="Azure"/>
+                <materialDesign:PackIcon Kind="Receipt" Width="50" Height="50" VerticalAlignment="Bottom"
+                        HorizontalAlignment="Right" Foreground="#F94F2F" />
 
             </Grid>
 
         </materialDesign:Card>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="3">
-            <TextBlock Text="Top 5 Product (nearly) out of stock" Padding="10 0 0 0" FontSize="20" Background="#FFFEA3B6" Foreground="White"/>
+            <TextBlock Text="Top 5 Product (nearly) out of stock" FontWeight="Bold" Padding="10 0 0 0" FontSize="18" Background="#F94F2F" Foreground="White"/>
             <DataGrid Grid.Row="0" x:Name="PhoneDataGrid" 
                     AutoGenerateColumns="False" ColumnHeaderHeight="30" HeadersVisibility="Column" 
-                    RowHeaderWidth="100" SelectionChanged="ProductDataGrid_SelectionChanged" 
+                    RowHeaderWidth="300" SelectionChanged="ProductDataGrid_SelectionChanged" 
                     CanUserResizeColumns="False" 
                     BorderBrush="Gray"
                     BorderThickness="1"
                     VerticalScrollBarVisibility="Hidden"
-                      HorizontalScrollBarVisibility="Hidden" 
-                      CanUserAddRows="False"
+                    HorizontalScrollBarVisibility="Hidden" 
+                    CanUserAddRows="False"
                     GridLinesVisibility="None" 
                     HorizontalGridLinesBrush="Gray"
                     SelectionMode="Single"
-                      AutomationProperties.IsColumnHeader="True" SelectedIndex="-1" CanUserDeleteRows="False" Background="#FF77E0E8">
+                    AutomationProperties.IsColumnHeader="True" SelectedIndex="-1" CanUserDeleteRows="False" Background="#F94F2F">
 
 
 
@@ -192,14 +189,11 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel>
-                                    <materialDesign:Badged>
-                                        <Button x:Name="AddButton" Click="AddStockButton_Click" 
-                                    Style="{StaticResource MaterialDesignFloatingActionMiniSecondaryDarkButton}">
-                                            <Button.Content>
-                                                <materialDesign:PackIcon Kind="AddBox"/>
-                                            </Button.Content>
-                                        </Button>
-                                    </materialDesign:Badged>
+                                    <Button x:Name="AddButton" Click="AddStockButton_Click" Background="#FFF" BorderBrush="#F5F5F5">
+                                        <Button.Content>
+                                            <materialDesign:PackIcon Kind="AddBox" Foreground="#F94F2F"/>
+                                        </Button.Content>
+                                    </Button>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>
@@ -215,8 +209,8 @@
                 <DataGrid.ColumnHeaderStyle>
                     <Style>
                         <Style.Setters>
-                            <Setter Property="Panel.Background" Value="Black"/>
-                            <Setter Property="TextBlock.Foreground" Value="White"/>
+                            <Setter Property="Panel.Background" Value="#F5F5F5"/>
+                            <Setter Property="TextBlock.Foreground" Value="#2673DD"/>
                             <Setter Property="TextBlock.Padding" Value="10,0"/>
                             <Setter Property="TextBlock.Height" Value="30"/>
                             <Setter Property="TextBlock.FontWeight" Value="Bold"/>
