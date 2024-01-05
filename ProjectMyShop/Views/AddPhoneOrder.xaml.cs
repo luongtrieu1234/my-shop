@@ -22,10 +22,10 @@ namespace ProjectMyShop.Views
     /// </summary>
     public partial class AddProductOrder : Window
     {
-        ProductBUS _phoneBus;
+        ProductBUS _ProductBus;
         CategoryBUS _categoryBus;
         List<Category> _categories;
-        List<Product> _selectedPhones;
+        List<Product> _selectedProducts;
         public DetailOrder detailOrder;
 
 
@@ -38,10 +38,10 @@ namespace ProjectMyShop.Views
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            int i = PhoneListView.SelectedIndex;
+            int i = ProductListView.SelectedIndex;
             if (i != -1)
             {
-                detailOrder.Product = _selectedPhones[i];
+                detailOrder.Product = _selectedProducts[i];
             }
             detailOrder.Quantity = int.Parse(QuantityTextBox.Text);
             DialogResult = true;
@@ -54,7 +54,7 @@ namespace ProjectMyShop.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            _phoneBus = new ProductBUS();
+            _ProductBus = new ProductBUS();
             _categoryBus = new CategoryBUS();
 
             _categories = _categoryBus.getCategoryList();
@@ -65,8 +65,8 @@ namespace ProjectMyShop.Views
 
             if (categoryCombobox.SelectedIndex >= 0)
             {
-                _selectedPhones = _phoneBus.getProductsAccordingToSpecificCategory(_categories[categoryCombobox.SelectedIndex].ID);
-                PhoneListView.ItemsSource = _selectedPhones;
+                _selectedProducts = _ProductBus.getProductsAccordingToSpecificCategory(_categories[categoryCombobox.SelectedIndex].ID);
+                ProductListView.ItemsSource = _selectedProducts;
             }
 
             DataContext = detailOrder;
@@ -76,8 +76,8 @@ namespace ProjectMyShop.Views
         {
             if (categoryCombobox.SelectedIndex >= 0)
             {
-                _selectedPhones = _phoneBus.getProductsAccordingToSpecificCategory(_categories[categoryCombobox.SelectedIndex].ID);
-                PhoneListView.ItemsSource = _selectedPhones;
+                _selectedProducts = _ProductBus.getProductsAccordingToSpecificCategory(_categories[categoryCombobox.SelectedIndex].ID);
+                ProductListView.ItemsSource = _selectedProducts;
             }
         }
 
@@ -117,15 +117,15 @@ namespace ProjectMyShop.Views
             return _regex.IsMatch(text);
         }
 
-        private void PhoneListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ProductListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            int i = PhoneListView.SelectedIndex;
+            int i = ProductListView.SelectedIndex;
             if (i != -1)
             {
-                detailOrder.Product = _selectedPhones[(int)i];
+                detailOrder.Product = _selectedProducts[(int)i];
                 detailOrder.Quantity = 0;
 
-                PhoneTextBox.Text = detailOrder.Product.ProductName;
+                ProductTextBox.Text = detailOrder.Product.ProductName;
                 QuantityTextBox.Text = detailOrder.Quantity.ToString();
             }
         }

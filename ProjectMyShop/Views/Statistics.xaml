@@ -98,7 +98,7 @@
         </materialDesign:Card>
 
         <materialDesign:Card
-                Name="currentTotalPhone"
+                Name="currentTotalProduct"
                 Grid.Row="1"
                 Width="200"
                 Height="100"

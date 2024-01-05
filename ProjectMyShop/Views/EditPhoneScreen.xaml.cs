@@ -22,12 +22,12 @@ namespace ProjectMyShop.Views
     /// </summary>
     public partial class EditProductScreen : Window
     {
-        public Product EditedPhone { get; set; }
+        public Product EditedProduct { get; set; }
         public EditProductScreen(Product p)
         {
             InitializeComponent();
-            EditedPhone = (Product)p.Clone();
-            this.DataContext = EditedPhone;
+            EditedProduct = (Product)p.Clone();
+            this.DataContext = EditedProduct;
         }
 
         private void editButton_Click(object sender, RoutedEventArgs e)
@@ -47,8 +47,8 @@ namespace ProjectMyShop.Views
             screen.Filter = "Image Files|*.jpg;*.jpeg;*.png;...";
             if (screen.ShowDialog() == true)
             {
-                EditedPhone.Avatar = new BitmapImage(new Uri(screen.FileName, UriKind.Absolute));
-                avatar.Source = EditedPhone.Avatar;
+                EditedProduct.Avatar = new BitmapImage(new Uri(screen.FileName, UriKind.Absolute));
+                avatar.Source = EditedProduct.Avatar;
             }
         }
     }

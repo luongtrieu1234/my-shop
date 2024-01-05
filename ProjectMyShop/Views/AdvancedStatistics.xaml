@@ -108,9 +108,9 @@
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
-                <TextBlock Text="Top 5 Best-selling Phones" FontSize="18" FontWeight="Bold" Background="#F94F2F" Foreground="White"/>
+                <TextBlock Text="Top 5 Best-selling Products" FontSize="18" FontWeight="Bold" Background="#F94F2F" Foreground="White"/>
             </DockPanel>
-            <DataGrid Grid.Row="0" x:Name="PhoneDataGrid" 
+            <DataGrid Grid.Row="0" x:Name="ProductDataGrid" 
                     AutoGenerateColumns="False" ColumnHeaderHeight="30" HeadersVisibility="Column" 
                     RowHeaderWidth="100" 
                     CanUserResizeColumns="False" 
@@ -131,7 +131,7 @@
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
                                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                    <TextBlock Text="{Binding PhoneName}"></TextBlock>
+                                    <TextBlock Text="{Binding ProductName}"></TextBlock>
                                 </StackPanel>
                             </DataTemplate>
                         </DataGridTemplateColumn.CellTemplate>

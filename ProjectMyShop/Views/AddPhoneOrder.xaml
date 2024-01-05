@@ -19,7 +19,7 @@
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
             </ComboBox>
-            <ListView x:Name="PhoneListView" SelectionChanged="PhoneListView_SelectionChanged" Height="400" Margin="10,5" Width="250">
+            <ListView x:Name="ProductListView" SelectionChanged="ProductListView_SelectionChanged" Height="400" Margin="10,5" Width="250">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextBlock>
@@ -38,7 +38,7 @@
         </StackPanel>
 
         <StackPanel Orientation="Vertical">
-            <TextBox x:Name="PhoneTextBox" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" materialDesign:HintAssist.Foreground="#F94F2F" Margin="10,10" materialDesign:HintAssist.Hint="Product Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"
+            <TextBox x:Name="ProductTextBox" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" materialDesign:HintAssist.Foreground="#F94F2F" Margin="10,10" materialDesign:HintAssist.Hint="Product Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" IsReadOnly="True"
                  Text="{Binding Path=Product.ProductName}" CaretBrush="#F94F2F"/>
             <TextBox x:Name="QuantityTextBox" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" materialDesign:HintAssist.Foreground="#F94F2F" Margin="10,10" materialDesign:HintAssist.Hint="Quantity" Style="{StaticResource MaterialDesignFloatingHintTextBox}" PreviewTextInput="PreviewTextInput" TextChanged="TextBox_TextChanged"
                  Text="{Binding Quantity}" CaretBrush="#F94F2F"/>

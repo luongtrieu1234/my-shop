@@ -15,7 +15,7 @@ namespace ProjectMyShop.Views
     /// </summary>
     public partial class Dashboard : Page
     {
-        public int totalPhone { get; set; } = 0;
+        public int totalProduct { get; set; } = 0;
         public int weekOrder { get; set; } = 0;
         public int monthOrder { get; set; } = 0;
 
@@ -29,12 +29,12 @@ namespace ProjectMyShop.Views
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            totalPhone = _productBUS.GetTotalProduct();
+            totalProduct = _productBUS.GetTotalProduct();
             weekOrder = _orderBUS.CountOrderByWeek();
             monthOrder = _orderBUS.CountOrderByMonth();
             _products = _productBUS.Top5OutStock();
 
-            PhoneDataGrid.ItemsSource = _products;
+            ProductDataGrid.ItemsSource = _products;
             DataContext = this;
             AppConfig.SetValue(AppConfig.LastWindow, "Dashboard");
         }
@@ -47,7 +47,7 @@ namespace ProjectMyShop.Views
         private void AddStockButton_Click(object sender, RoutedEventArgs e)
         {
             var row = GetParent<DataGridRow>((Button)sender);
-            int index = PhoneDataGrid.Items.IndexOf(row.Item);
+            int index = ProductDataGrid.Items.IndexOf(row.Item);
             if (index != -1)
             {
                 Product p = _products![index];
@@ -57,12 +57,12 @@ namespace ProjectMyShop.Views
                 {
                     try
                     {
-                        var newPhone = screen.newPhone;
-                        _productBUS.updateProduct(p.ID, newPhone);
+                        var newProduct = screen.newProduct;
+                        _productBUS.updateProduct(p.ID, newProduct);
 
                         // reload page
                         _products = _productBUS.Top5OutStock();
-                        PhoneDataGrid.ItemsSource = _products;
+                        ProductDataGrid.ItemsSource = _products;
                     }
                     catch (Exception ex)
                     {

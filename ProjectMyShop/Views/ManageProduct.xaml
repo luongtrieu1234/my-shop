@@ -106,7 +106,7 @@
                                  Foreground="Black"
                                  materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F"
                                  materialDesign:HintAssist.Foreground="#F94F2F"
-                                 materialDesign:HintAssist.Hint="Search your phone here..." Grid.ColumnSpan="2" Margin="26,0,0,0" 
+                                 materialDesign:HintAssist.Hint="Search your Product here..." Grid.ColumnSpan="2" Margin="26,0,0,0" 
                                  />
                             </Grid>
                         </materialDesign:Card>
@@ -166,14 +166,14 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <ListView Name="phonesListView" Grid.Row="1" Grid.Column="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2" Margin="0,59,0,0" Grid.RowSpan="2">
+                <ListView Name="ProductsListView" Grid.Row="1" Grid.Column="2" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.ColumnSpan="2" Margin="0,59,0,0" Grid.RowSpan="2">
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <WrapPanel/>
                         </ItemsPanelTemplate>
                     </ListView.ItemsPanel>
                     <ListView.Resources>
-                        <ContextMenu x:Key="phoneContextMenu" Background="White">
+                        <ContextMenu x:Key="ProductContextMenu" Background="White">
                             <MenuItem Header="Edit" Click="editMenuItem_Click">
                                 <MenuItem.Icon>
                                     <materialDesign:PackIcon Kind="Pencil"/>
@@ -188,7 +188,7 @@
                     </ListView.Resources>
                     <ListView.ItemContainerStyle>
                         <Style TargetType="{x:Type ListViewItem}" >
-                            <Setter Property="ContextMenu" Value="{StaticResource phoneContextMenu}" />
+                            <Setter Property="ContextMenu" Value="{StaticResource ProductContextMenu}" />
                             <Setter Property="BorderBrush" Value="#ccc" />
                             <Setter Property="BorderThickness" Value="1 1 1 1" />
 

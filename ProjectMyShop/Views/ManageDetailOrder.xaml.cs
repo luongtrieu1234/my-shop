@@ -49,7 +49,7 @@ namespace ProjectMyShop.Views
 
             if (order.ID == 0)
             {
-                ChoosePhoneButton.IsEnabled = false;
+                ChooseProductButton.IsEnabled = false;
                 UpdateButton.IsEnabled = false;
                 DeleteButton.IsEnabled = false;
             }
@@ -58,7 +58,7 @@ namespace ProjectMyShop.Views
             if (order.DetailOrderList != null)
             {
                 _vm.detailOrders = new BindingList<DetailOrder>(order.DetailOrderList);
-                PhoneDataGrid.ItemsSource = order.DetailOrderList;
+                ProductDataGrid.ItemsSource = order.DetailOrderList;
             }
 
             _orderBUS = new OrderBUS();
@@ -84,13 +84,13 @@ namespace ProjectMyShop.Views
             return DateOnly.Parse(dateTime.Date.ToShortDateString());
         }
 
-        bool isInProductList(Product phone)
+        bool isInProductList(Product Product)
         {
             bool result = false;
             if (order.DetailOrderList != null)
             {
                 foreach (DetailOrder detail in order.DetailOrderList) {
-                    if (detail.Product.ID == phone.ID)
+                    if (detail.Product.ID == Product.ID)
                     {
                         result = true;
                         break;
@@ -109,7 +109,7 @@ namespace ProjectMyShop.Views
         private void ChooseProductButton_Click(object sender, RoutedEventArgs e)
         {
             detailOrder.Product = new Product();
-            detailOrder.Product.ProductName = "Choose a phone";
+            detailOrder.Product.ProductName = "Choose a Product";
             detailOrder.Quantity = 0;
             var screen = new AddProductOrder(detailOrder);
             if (screen.ShowDialog() == true)
@@ -123,7 +123,7 @@ namespace ProjectMyShop.Views
                 }
                 else
                 {
-                    MessageBox.Show($"{screen.detailOrder.Product.ProductName}'s already exists in detail order.\nChoose 'Update' instead", "Duplicate phone", MessageBoxButton.OK, MessageBoxImage.Error);
+                    MessageBox.Show($"{screen.detailOrder.Product.ProductName}'s already exists in detail order.\nChoose 'Update' instead", "Duplicate Product", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
                 Reload();
             }
@@ -131,7 +131,7 @@ namespace ProjectMyShop.Views
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
         {
-            int i = PhoneDataGrid.SelectedIndex;
+            int i = ProductDataGrid.SelectedIndex;
 
             if (i != -1)
             {
@@ -151,7 +151,7 @@ namespace ProjectMyShop.Views
                     }
                     else
                     {
-                        MessageBox.Show($"{screen.detailOrder.Product.ProductName}'s already exists in detail order.\nPlease choose another phone", "Duplicate phone", MessageBoxButton.OK, MessageBoxImage.Error);
+                        MessageBox.Show($"{screen.detailOrder.Product.ProductName}'s already exists in detail order.\nPlease choose another Product", "Duplicate Product", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                     Reload();
                 }
@@ -160,11 +160,11 @@ namespace ProjectMyShop.Views
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            int i = PhoneDataGrid.SelectedIndex;
+            int i = ProductDataGrid.SelectedIndex;
 
             if (i != -1)
             {
-                var res = MessageBox.Show($"Are you sure to discard this phone: {order.DetailOrderList[i].Product.ProductName}?", "Delete phone from order", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var res = MessageBox.Show($"Are you sure to discard this Product: {order.DetailOrderList[i].Product.ProductName}?", "Delete Product from order", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (res == MessageBoxResult.Yes)
                 {
                     _orderBUS.DeleteDetailOrder(order.DetailOrderList[i]);
@@ -184,7 +184,7 @@ namespace ProjectMyShop.Views
             if (order.DetailOrderList != null)
             {
                 _vm.detailOrders = new BindingList<DetailOrder>(order.DetailOrderList);
-                PhoneDataGrid.ItemsSource = _vm.detailOrders;
+                ProductDataGrid.ItemsSource = _vm.detailOrders;
             }
         }
 
@@ -192,7 +192,7 @@ namespace ProjectMyShop.Views
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            int i = PhoneDataGrid.SelectedIndex;
+            int i = ProductDataGrid.SelectedIndex;
             if (i != -1)
             {
                 var QuantityTextBox = e.OriginalSource as TextBox;

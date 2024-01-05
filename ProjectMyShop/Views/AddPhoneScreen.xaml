@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ProjectMyShop.Views"
         mc:Ignorable="d"
-        Title="AddPhoneScreen" Height="650" Width="800">
+        Title="AddProductScreen" Height="650" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10*"/>
@@ -38,7 +38,7 @@
         <Button x:Name="chooseImageButton" Background="Transparent" Click="chooseImageButton_Click" Height="300" Grid.Row="2" Grid.Column="1" Grid.RowSpan="4" BorderBrush="#F94F2F" Margin="42,13,28,14">
             <Image x:Name="avatar" RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding Avatar}" />
         </Button>
-        <TextBox BorderThickness="1" BorderBrush="#F94F2F" Padding="5" materialDesign:HintAssist.Foreground="#F94F2F" Height="50" Text="{Binding ProductName}" x:Name="phoneNameBox" Grid.Column="2" Grid.Row="2" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" materialDesign:HintAssist.Hint="Product's name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox BorderThickness="1" BorderBrush="#F94F2F" Padding="5" materialDesign:HintAssist.Foreground="#F94F2F" Height="50" Text="{Binding ProductName}" x:Name="ProductNameBox" Grid.Column="2" Grid.Row="2" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" materialDesign:HintAssist.Hint="Product's name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <TextBox BorderThickness="1" BorderBrush="#F94F2F" Padding="5" materialDesign:HintAssist.Foreground="#F94F2F" Height="50" Text="{Binding Manufacturer}" x:Name="manufacturerBox" Grid.Column="2" Grid.Row="3" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" materialDesign:HintAssist.Hint="Manufacturer" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
         <TextBox BorderThickness="1" BorderBrush="#F94F2F" Padding="5" Margin="0 20" materialDesign:HintAssist.Foreground="#F94F2F" Text="{Binding Description}" x:Name="descriptionBox" Grid.Column="2" Grid.Row="4" Grid.RowSpan="2" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <Grid Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2">
@@ -53,7 +53,7 @@
         </Grid>
         <StackPanel Height="40" Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,26,0,25">
             <Button x:Name="cancelButton" Click="cancelButton_Click" Content="Cancel" Width="120" Margin="0 0 20 0" BorderBrush="#FFF" Background="#F94F2F"/>
-            <Button x:Name="addButton" Click="addButton_Click" Content="Add phone" Width="120" BorderBrush="#FFF" Background="#F94F2F"/>
+            <Button x:Name="addButton" Click="addButton_Click" Content="Add Product" Width="120" BorderBrush="#FFF" Background="#F94F2F"/>
         </StackPanel>
     </Grid>
 </Window>

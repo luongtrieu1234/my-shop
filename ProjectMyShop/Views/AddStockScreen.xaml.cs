@@ -21,13 +21,13 @@ namespace ProjectMyShop.Views
     /// </summary>
     public partial class AddStockScreen : Window
     {
-        public Product newPhone { get; set; }
+        public Product newProduct { get; set; }
         public AddStockScreen(Product p)
         {
             InitializeComponent();
-            newPhone = (Product)p.Clone();
-            Debug.WriteLine(newPhone.Description);
-            this.DataContext = newPhone;
+            newProduct = (Product)p.Clone();
+            Debug.WriteLine(newProduct.Description);
+            this.DataContext = newProduct;
         }
 
         private void addButton_Click(object sender, RoutedEventArgs e)

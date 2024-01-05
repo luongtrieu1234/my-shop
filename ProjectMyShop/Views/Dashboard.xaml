@@ -23,7 +23,7 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <materialDesign:Card
-                Name="currentTotalPhone"
+                Name="currentTotalProduct"
                 Grid.Row="1"
                 Width="200"
                 Height="100"
@@ -40,8 +40,8 @@
 
                     <!-- binding -->
 
-                    <TextBlock x:Name="SumPhones" 
-                                Text="{Binding totalPhone}"
+                    <TextBlock x:Name="SumProducts" 
+                                Text="{Binding totalProduct}"
                                    Foreground="#2673DD"
                                    Style="{StaticResource MaterialDesignSubtitle1TextBlock}"/>
 
@@ -120,7 +120,7 @@
         </materialDesign:Card>
         <StackPanel Grid.Row="2" Grid.ColumnSpan="3">
             <TextBlock Text="Top 5 Product (nearly) out of stock" FontWeight="Bold" Padding="10 0 0 0" FontSize="18" Background="#F94F2F" Foreground="White"/>
-            <DataGrid Grid.Row="0" x:Name="PhoneDataGrid" 
+            <DataGrid Grid.Row="0" x:Name="ProductDataGrid" 
                     AutoGenerateColumns="False" ColumnHeaderHeight="30" HeadersVisibility="Column" 
                     RowHeaderWidth="300" SelectionChanged="ProductDataGrid_SelectionChanged" 
                     CanUserResizeColumns="False" 

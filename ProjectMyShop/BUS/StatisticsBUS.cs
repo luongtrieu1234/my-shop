@@ -75,24 +75,24 @@ namespace ProjectMyShop.BUS
             return _statisticsDAO.getYearlyProfit();
         }
 
-        public List<Tuple<string, int>> getDailyQuantityOfSpecificProduct(int srcPhoneID, int srcCategoryID, DateTime srcDate)
+        public List<Tuple<string, int>> getDailyQuantityOfSpecificProduct(int srcProductID, int srcCategoryID, DateTime srcDate)
         {
-            return _statisticsDAO.getDailyQuantityOfSpecificProduct(srcPhoneID, srcCategoryID, srcDate);
+            return _statisticsDAO.getDailyQuantityOfSpecificProduct(srcProductID, srcCategoryID, srcDate);
         }
 
-        public List<Tuple<string, int>> getWeeklyQuantityOfSpecificProduct(int srcPhoneID, int srcCategoryID, DateTime srcDate)
+        public List<Tuple<string, int>> getWeeklyQuantityOfSpecificProduct(int srcProductID, int srcCategoryID, DateTime srcDate)
         {
-            return _statisticsDAO.getWeeklyQuantityOfSpecificProduct(srcPhoneID, srcCategoryID, srcDate);
+            return _statisticsDAO.getWeeklyQuantityOfSpecificProduct(srcProductID, srcCategoryID, srcDate);
         }
 
-        public List<Tuple<string, int>> getMonthlyQuantityOfSpecificProduct(int srcPhoneID, int srcCategoryID, DateTime srcDate)
+        public List<Tuple<string, int>> getMonthlyQuantityOfSpecificProduct(int srcProductID, int srcCategoryID, DateTime srcDate)
         {
-            return _statisticsDAO.getMonthlyQuantityOfSpecificProduct(srcPhoneID, srcCategoryID, srcDate);
+            return _statisticsDAO.getMonthlyQuantityOfSpecificProduct(srcProductID, srcCategoryID, srcDate);
         }
 
-        public List<Tuple<string, int>> getYearlyQuantityOfSpecificProduct(int srcPhoneID, int srcCategoryID)
+        public List<Tuple<string, int>> getYearlyQuantityOfSpecificProduct(int srcProductID, int srcCategoryID)
         {
-            return _statisticsDAO.getYearlyQuantityOfSpecificProduct(srcPhoneID, srcCategoryID);
+            return _statisticsDAO.getYearlyQuantityOfSpecificProduct(srcProductID, srcCategoryID);
         }
 
         public List<Tuple<string, int>> getProductQuantityInCategory(int srcCategoryID)

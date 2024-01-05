@@ -22,16 +22,16 @@ namespace ProjectMyShop.Views
     /// </summary>
     public partial class AddProductScreen : Window
     {
-        public Product newPhone { get; set; }
+        public Product newProduct { get; set; }
         public int catIndex { get; set; } = -1;
-        ProductBUS _phoneBUS { get; set; }
+        ProductBUS _ProductBUS { get; set; }
         
 
         public AddProductScreen(List<Category> category)
         {
             InitializeComponent();
-            newPhone = new Product();
-            this.DataContext = newPhone;
+            newProduct = new Product();
+            this.DataContext = newProduct;
             categoryCombobox.ItemsSource = category;
         }
 
@@ -49,7 +49,7 @@ namespace ProjectMyShop.Views
         {
             // Check validity
 
-            //Product phone = new Product()
+            //Product Product = new Product()
             //{
             //    ProductName = "Galaxy",
             //    Manufacturer = "Samsung",
@@ -74,8 +74,8 @@ namespace ProjectMyShop.Views
             var screen = new OpenFileDialog();
             if(screen.ShowDialog() == true)
             {
-                newPhone.Avatar = new BitmapImage(new Uri(screen.FileName, UriKind.Absolute));
-                avatar.Source = newPhone.Avatar;
+                newProduct.Avatar = new BitmapImage(new Uri(screen.FileName, UriKind.Absolute));
+                avatar.Source = newProduct.Avatar;
             }
         }
     }

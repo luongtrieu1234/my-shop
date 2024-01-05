@@ -36,14 +36,14 @@ namespace ProjectMyShop.Views
             timeCombobox.ItemsSource = figureValues;
             timeCombobox.SelectedIndex = figureIndex;
 
-            phones = _phoneBUS.getBestSellingPhonesInWeek(selectedDate);
+            Products = _ProductBUS.getBestSellingProductsInWeek(selectedDate);
 
-            for (int i = 0; i < phones.Count(); i++)
+            for (int i = 0; i < Products.Count(); i++)
             {
-               System.Diagnostics.Debug.WriteLine(phones[i].ProductName);
+               System.Diagnostics.Debug.WriteLine(Products[i].ProductName);
             }
 
-            PhoneDataGrid.ItemsSource = phones;
+            ProductDataGrid.ItemsSource = Products;
 
             DataContext = this;
         }
@@ -57,10 +57,10 @@ namespace ProjectMyShop.Views
         public List<string> figureValues = new List<string>() {"In Week", "In Month", "In Year" };
         public List<string> statisticsFigureValues = new List<string>() { "General", "Specific", "Advanced" };
         public int statisticsFigureIndex { get; set; } = 2;
-        public List<BestSellingProduct> phones;
+        public List<BestSellingProduct> Products;
         private Statistics _statisticsPage;
         private SpecificStatistics _specificPage;
-        ProductBUS _phoneBUS = new ProductBUS();
+        ProductBUS _ProductBUS = new ProductBUS();
 
         private void statisticsCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -83,37 +83,37 @@ namespace ProjectMyShop.Views
             }
         }
 
-        public void configureBestSellingPhonesDataGrid()
+        public void configureBestSellingProductsDataGrid()
         {
             switch (figureIndex)
             {
                 case 0:
-                    phones = _phoneBUS.getBestSellingPhonesInWeek(selectedDate);
-                    PhoneDataGrid.ItemsSource = phones;
+                    Products = _ProductBUS.getBestSellingProductsInWeek(selectedDate);
+                    ProductDataGrid.ItemsSource = Products;
                     break;
                 case 1:
-                    phones = _phoneBUS.getBestSellingPhonesInMonth(selectedDate);
-                    PhoneDataGrid.ItemsSource = phones;
+                    Products = _ProductBUS.getBestSellingProductsInMonth(selectedDate);
+                    ProductDataGrid.ItemsSource = Products;
                     break;
                 case 2:
-                    phones = _phoneBUS.getBestSellingPhonesInYear(selectedDate);
-                    PhoneDataGrid.ItemsSource = phones;
+                    Products = _ProductBUS.getBestSellingProductsInYear(selectedDate);
+                    ProductDataGrid.ItemsSource = Products;
                     break;
                 default:
-                    phones = _phoneBUS.getBestSellingPhonesInWeek(selectedDate);
-                    PhoneDataGrid.ItemsSource = phones;
+                    Products = _ProductBUS.getBestSellingProductsInWeek(selectedDate);
+                    ProductDataGrid.ItemsSource = Products;
                     break;
             }
         }
 
         private void timeCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            configureBestSellingPhonesDataGrid();
+            configureBestSellingProductsDataGrid();
         }
 
         private void statisticsDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            configureBestSellingPhonesDataGrid();
+            configureBestSellingProductsDataGrid();
         }
     }
 }

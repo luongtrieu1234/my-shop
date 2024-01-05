@@ -35,17 +35,17 @@ namespace ProjectMyShop.Views
 
             _statisticsBUS = new StatisticsBUS();
             _categoryBUS = new CategoryBUS();
-            _phoneBUS = new ProductBUS();
+            _ProductBUS = new ProductBUS();
 
             categories = _categoryBUS.getCategoryList();
             categoriesCombobox.ItemsSource = categories;
 
             if (categories.Count() > 0)
-                phones = _phoneBUS.getProductsAccordingToSpecificCategory(categories[categoriesFigureIndex].ID);
+                Products = _ProductBUS.getProductsAccordingToSpecificCategory(categories[categoriesFigureIndex].ID);
             else
-                phones = new List<Product> { };
+                Products = new List<Product> { };
 
-            productCombobox.ItemsSource = phones;
+            productCombobox.ItemsSource = Products;
 
             statisticsCombobox.ItemsSource = statisticsFigureValues;
             statisticsCombobox.SelectedIndex = statisticsFigureIndex;
@@ -67,7 +67,7 @@ namespace ProjectMyShop.Views
 
         private StatisticsBUS _statisticsBUS;
         private CategoryBUS _categoryBUS;
-        private ProductBUS _phoneBUS;
+        private ProductBUS _ProductBUS;
         public int statisticsFigureIndex { get; set; } = 1;
         public int bargraphFigureIndex { get; set; } = 0;
         public int tabSelectedIndex { get; set; } = 0;
@@ -77,7 +77,7 @@ namespace ProjectMyShop.Views
         public List<string> figureValues = new List<string>() { "Daily", "Weekly", "Monthly", "Yearly" };
         public List<string> statisticsFigureValues = new List<string>() { "General", "Specific", "Advanced" };
         public List<Category> categories;
-        public List<Product> phones;
+        public List<Product> Products;
         private Statistics _statisticsPage;
         private AdvancedStatistics _advancedPage;
 
@@ -87,9 +87,9 @@ namespace ProjectMyShop.Views
             switch (bargraphFigureIndex)
             {
                 case 0:
-                    if (phones.Count() > 0 && categories.Count() > 0)
+                    if (Products.Count() > 0 && categories.Count() > 0)
                     {
-                        var productResult = _statisticsBUS.getDailyQuantityOfSpecificProduct(phones[productFigureIndex].ID, categories[categoriesFigureIndex].ID, selectedDate);
+                        var productResult = _statisticsBUS.getDailyQuantityOfSpecificProduct(Products[productFigureIndex].ID, categories[categoriesFigureIndex].ID, selectedDate);
 
                         var quantity = new ChartValues<int>();
                         var dates = new List<string>();
@@ -129,9 +129,9 @@ namespace ProjectMyShop.Views
                     }
                     break;
                 case 1:
-                    if (phones.Count() > 0 && categories.Count() > 0)
+                    if (Products.Count() > 0 && categories.Count() > 0)
                     {
-                        var weeklyProductResult = _statisticsBUS.getMonthlyQuantityOfSpecificProduct(phones[productFigureIndex].ID, categories[categoriesFigureIndex].ID, selectedDate);
+                        var weeklyProductResult = _statisticsBUS.getMonthlyQuantityOfSpecificProduct(Products[productFigureIndex].ID, categories[categoriesFigureIndex].ID, selectedDate);
 
                         var weeklyQuantity = new ChartValues<int>();
                         var weeks = new List<string>();
@@ -170,9 +170,9 @@ namespace ProjectMyShop.Views
                     }
                     break;
                 case 2:
-                    if (phones.Count() > 0 && categories.Count() > 0)
+                    if (Products.Count() > 0 && categories.Count() > 0)
                     {
-                        var monthlyProductResult = _statisticsBUS.getMonthlyQuantityOfSpecificProduct(phones[productFigureIndex].ID, categories[categoriesFigureIndex].ID, selectedDate);
+                        var monthlyProductResult = _statisticsBUS.getMonthlyQuantityOfSpecificProduct(Products[productFigureIndex].ID, categories[categoriesFigureIndex].ID, selectedDate);
 
                         var monthlyQuantity = new ChartValues<int>();
                         var months = new List<string>();
@@ -212,9 +212,9 @@ namespace ProjectMyShop.Views
                     }
                     break;
                 case 3:
-                    if (phones.Count() > 0 && categories.Count() > 0)
+                    if (Products.Count() > 0 && categories.Count() > 0)
                     {
-                        var yearlyProductResult = _statisticsBUS.getYearlyQuantityOfSpecificProduct(phones[productFigureIndex].ID, categories[categoriesFigureIndex].ID);
+                        var yearlyProductResult = _statisticsBUS.getYearlyQuantityOfSpecificProduct(Products[productFigureIndex].ID, categories[categoriesFigureIndex].ID);
 
                         var yearlyQuantity = new ChartValues<int>();
                         var years = new List<string>();
@@ -256,15 +256,15 @@ namespace ProjectMyShop.Views
 
         public void configurePieChart()
         {
-            if (phones.Count() > 0 && categories.Count() > 0)
+            if (Products.Count() > 0 && categories.Count() > 0)
             {
-                var phoneResult = _statisticsBUS.getProductQuantityInCategory(categories[categoriesFigureIndex].ID);
+                var ProductResult = _statisticsBUS.getProductQuantityInCategory(categories[categoriesFigureIndex].ID);
 
-                var phoneQuantityCollection = new SeriesCollection();
+                var ProductQuantityCollection = new SeriesCollection();
 
-                foreach (var item in phoneResult)
+                foreach (var item in ProductResult)
                 {
-                    phoneQuantityCollection.Add(new PieSeries
+                    ProductQuantityCollection.Add(new PieSeries
                     {
                         Title = item.Item1.ToString(),
                         Values = new ChartValues<double> { Convert.ToDouble((int)item.Item2) },
@@ -273,18 +273,18 @@ namespace ProjectMyShop.Views
                     });
                 }
 
-                productPieChart.Series = phoneQuantityCollection;
+                productPieChart.Series = ProductQuantityCollection;
             }
         }
 
         private void categoriesCombobox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            phones = _phoneBUS.getProductsAccordingToSpecificCategory(categories[categoriesFigureIndex].ID);
-            productCombobox.ItemsSource = phones;
+            Products = _ProductBUS.getProductsAccordingToSpecificCategory(categories[categoriesFigureIndex].ID);
+            productCombobox.ItemsSource = Products;
 
             configurePieChart();
 
-            if (phones.Count > 0)
+            if (Products.Count > 0)
             {
                 productFigureIndex = 0;
                 productCombobox.SelectedIndex = productFigureIndex;

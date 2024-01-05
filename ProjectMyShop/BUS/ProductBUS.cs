@@ -75,23 +75,23 @@ namespace ProjectMyShop.BUS
             }
         }
 
-        public List<BestSellingProduct> getBestSellingPhonesInWeek(DateTime src)
+        public List<BestSellingProduct> getBestSellingProductsInWeek(DateTime src)
         {
             return _productDAO.getBestSellingProductsInWeek(src);
         }
 
-        public List<BestSellingProduct> getBestSellingPhonesInMonth(DateTime src)
+        public List<BestSellingProduct> getBestSellingProductsInMonth(DateTime src)
         {
             return _productDAO.getBestSellingProductsInMonth(src);
         }
 
-        public List<BestSellingProduct> getBestSellingPhonesInYear(DateTime src)
+        public List<BestSellingProduct> getBestSellingProductsInYear(DateTime src)
         {
             return _productDAO.getBestSellingProductsInYear(src);
         }
-        public Product? getProductByID(int phoneID)
+        public Product? getProductByID(int ProductID)
         {
-            return _productDAO.getProductByID(phoneID);
+            return _productDAO.getProductByID(ProductID);
         }
     }
 }

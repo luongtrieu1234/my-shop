@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ProjectMyShop.Views" xmlns:local1="clr-namespace:ProjectMyShop.Converter"
         mc:Ignorable="d"
-        Title="EditPhoneScreen" Height="650" Width="800">
+        Title="EditProductScreen" Height="650" Width="800">
     <Window.Resources>
         <local1:CurrencyConverter x:Key="currencyConverter"/>
         <Style TargetType="{x:Type Button}" x:Key="ImageButtonStyle">
@@ -38,7 +38,7 @@
         <Button Style="{StaticResource ImageButtonStyle}" Click="ImageButton_Click" Width="300" BorderBrush="#F94F2F" Height="300" Grid.Row="0" Grid.Column="1" Grid.RowSpan="4">
             <Image x:Name="avatar" RenderOptions.BitmapScalingMode="HighQuality" Source="{Binding Avatar}" />
         </Button>
-        <TextBox BorderThickness="1" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" BorderBrush="#F94F2F" materialDesign:HintAssist.Foreground="#F94F2F" Padding="5" Height="50" Text="{Binding ProductName}" x:Name="phoneNameBox" Grid.Column="2" Grid.Row="0" Margin="10" materialDesign:HintAssist.Hint="Product's name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+        <TextBox BorderThickness="1" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" BorderBrush="#F94F2F" materialDesign:HintAssist.Foreground="#F94F2F" Padding="5" Height="50" Text="{Binding ProductName}" x:Name="ProductNameBox" Grid.Column="2" Grid.Row="0" Margin="10" materialDesign:HintAssist.Hint="Product's name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
         <TextBox BorderThickness="1" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" BorderBrush="#F94F2F" materialDesign:HintAssist.Foreground="#F94F2F" Padding="5" Height="50" Text="{Binding Manufacturer}" x:Name="manufacturerBox" Grid.Column="2" Grid.Row="1" Margin="10" materialDesign:HintAssist.Hint="Manufacturer" Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
         <TextBox BorderThickness="1" materialDesign:TextFieldAssist.UnderlineBrush="#F94F2F" materialDesign:HintAssist.Foreground="#F94F2F" BorderBrush="#F94F2F" Padding="5" Height="150" Text="{Binding Description}" x:Name="descriptionBox" Grid.Column="2" Grid.Row="2" Grid.RowSpan="2" materialDesign:HintAssist.Hint="Description" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="10"/>
         <Grid Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">
